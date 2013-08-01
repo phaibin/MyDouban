@@ -1,0 +1,17 @@
+//
+//  LoginViewController.h
+//  MyDouban
+//
+//  Created by Leon on 13-7-31.
+//  Copyright (c) 2013年 Leon. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface LoginViewController : UIViewController<UIWebViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *webview;
+
+- (IBAction)cancelTapped:(id)sender;
+
+@end

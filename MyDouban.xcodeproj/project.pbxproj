@@ -17,15 +17,20 @@
 		35779C4917A8C08F00319BF5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4817A8C08F00319BF5 /* Default@2x.png */; };
 		35779C4B17A8C08F00319BF5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */; };
 		35779C4E17A8C08F00319BF5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */; };
-		35779C5117A8C08F00319BF5 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C5017A8C08F00319BF5 /* FirstViewController.m */; };
+		35779C5117A8C08F00319BF5 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C5017A8C08F00319BF5 /* BookViewController.m */; };
 		35779C5317A8C08F00319BF5 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5217A8C08F00319BF5 /* first.png */; };
 		35779C5517A8C08F00319BF5 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5417A8C08F00319BF5 /* first@2x.png */; };
-		35779C5817A8C08F00319BF5 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C5717A8C08F00319BF5 /* SecondViewController.m */; };
+		35779C5817A8C08F00319BF5 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C5717A8C08F00319BF5 /* MovieViewController.m */; };
 		35779C5A17A8C08F00319BF5 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5917A8C08F00319BF5 /* second.png */; };
 		35779C5C17A8C08F00319BF5 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5B17A8C08F00319BF5 /* second@2x.png */; };
+		35779C6417A8C1A900319BF5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C6317A8C1A900319BF5 /* LoginViewController.m */; };
+		3578532617A8E1E000014AE0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532517A8E1E000014AE0 /* SystemConfiguration.framework */; };
+		3578532817A8E1EC00014AE0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */; };
+		812A5991BC0647C0AF45E5CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115DEEE47292483A82C9B0C1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115DEEE47292483A82C9B0C1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		35779C3117A8C08F00319BF5 /* MyDouban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDouban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35779C3417A8C08F00319BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		35779C3617A8C08F00319BF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,14 +45,20 @@
 		35779C4817A8C08F00319BF5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		35779C4D17A8C08F00319BF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		35779C4F17A8C08F00319BF5 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		35779C5017A8C08F00319BF5 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		35779C4F17A8C08F00319BF5 /* BookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookViewController.h; sourceTree = "<group>"; };
+		35779C5017A8C08F00319BF5 /* BookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookViewController.m; sourceTree = "<group>"; };
 		35779C5217A8C08F00319BF5 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		35779C5417A8C08F00319BF5 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		35779C5617A8C08F00319BF5 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		35779C5717A8C08F00319BF5 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		35779C5617A8C08F00319BF5 /* MovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
+		35779C5717A8C08F00319BF5 /* MovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		35779C5917A8C08F00319BF5 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		35779C5B17A8C08F00319BF5 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		35779C6217A8C1A900319BF5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		35779C6317A8C1A900319BF5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		35779C6517A8D97D00319BF5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		3578532517A8E1E000014AE0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E476C7EAAE8C49B79275C644 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +66,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3578532817A8E1EC00014AE0 /* MobileCoreServices.framework in Frameworks */,
+				3578532617A8E1E000014AE0 /* SystemConfiguration.framework in Frameworks */,
 				35779C3517A8C08F00319BF5 /* UIKit.framework in Frameworks */,
 				35779C3717A8C08F00319BF5 /* Foundation.framework in Frameworks */,
 				35779C3917A8C08F00319BF5 /* CoreGraphics.framework in Frameworks */,
+				812A5991BC0647C0AF45E5CD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 				35779C3A17A8C08F00319BF5 /* MyDouban */,
 				35779C3317A8C08F00319BF5 /* Frameworks */,
 				35779C3217A8C08F00319BF5 /* Products */,
+				E476C7EAAE8C49B79275C644 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,9 +99,12 @@
 		35779C3317A8C08F00319BF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */,
+				3578532517A8E1E000014AE0 /* SystemConfiguration.framework */,
 				35779C3417A8C08F00319BF5 /* UIKit.framework */,
 				35779C3617A8C08F00319BF5 /* Foundation.framework */,
 				35779C3817A8C08F00319BF5 /* CoreGraphics.framework */,
+				115DEEE47292483A82C9B0C1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,14 +115,17 @@
 				35779C4317A8C08F00319BF5 /* AppDelegate.h */,
 				35779C4417A8C08F00319BF5 /* AppDelegate.m */,
 				35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */,
-				35779C4F17A8C08F00319BF5 /* FirstViewController.h */,
-				35779C5017A8C08F00319BF5 /* FirstViewController.m */,
+				35779C4F17A8C08F00319BF5 /* BookViewController.h */,
+				35779C5017A8C08F00319BF5 /* BookViewController.m */,
 				35779C5217A8C08F00319BF5 /* first.png */,
 				35779C5417A8C08F00319BF5 /* first@2x.png */,
-				35779C5617A8C08F00319BF5 /* SecondViewController.h */,
-				35779C5717A8C08F00319BF5 /* SecondViewController.m */,
+				35779C5617A8C08F00319BF5 /* MovieViewController.h */,
+				35779C5717A8C08F00319BF5 /* MovieViewController.m */,
 				35779C5917A8C08F00319BF5 /* second.png */,
 				35779C5B17A8C08F00319BF5 /* second@2x.png */,
+				35779C6217A8C1A900319BF5 /* LoginViewController.h */,
+				35779C6317A8C1A900319BF5 /* LoginViewController.m */,
+				35779C6517A8D97D00319BF5 /* Constants.h */,
 				35779C3B17A8C08F00319BF5 /* Supporting Files */,
 			);
 			path = MyDouban;
@@ -131,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35779C5F17A8C08F00319BF5 /* Build configuration list for PBXNativeTarget "MyDouban" */;
 			buildPhases = (
+				B12FC97A741647C2B9B0884B /* Check Pods Manifest.lock */,
 				35779C2D17A8C08F00319BF5 /* Sources */,
 				35779C2E17A8C08F00319BF5 /* Frameworks */,
 				35779C2F17A8C08F00319BF5 /* Resources */,
+				8E8BA98C04084746BFDD6D53 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,6 +212,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E8BA98C04084746BFDD6D53 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B12FC97A741647C2B9B0884B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35779C2D17A8C08F00319BF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -196,8 +252,9 @@
 			files = (
 				35779C4117A8C08F00319BF5 /* main.m in Sources */,
 				35779C4517A8C08F00319BF5 /* AppDelegate.m in Sources */,
-				35779C5117A8C08F00319BF5 /* FirstViewController.m in Sources */,
-				35779C5817A8C08F00319BF5 /* SecondViewController.m in Sources */,
+				35779C5117A8C08F00319BF5 /* BookViewController.m in Sources */,
+				35779C5817A8C08F00319BF5 /* MovieViewController.m in Sources */,
+				35779C6417A8C1A900319BF5 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +338,7 @@
 		};
 		35779C6017A8C08F00319BF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E476C7EAAE8C49B79275C644 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
@@ -292,6 +350,7 @@
 		};
 		35779C6117A8C08F00319BF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E476C7EAAE8C49B79275C644 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
@@ -320,6 +379,7 @@
 				35779C6117A8C08F00319BF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,15 +17,18 @@
 		35779C4917A8C08F00319BF5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4817A8C08F00319BF5 /* Default@2x.png */; };
 		35779C4B17A8C08F00319BF5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */; };
 		35779C4E17A8C08F00319BF5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */; };
-		35779C5117A8C08F00319BF5 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C5017A8C08F00319BF5 /* BookViewController.m */; };
 		35779C5317A8C08F00319BF5 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5217A8C08F00319BF5 /* first.png */; };
 		35779C5517A8C08F00319BF5 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5417A8C08F00319BF5 /* first@2x.png */; };
-		35779C5817A8C08F00319BF5 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C5717A8C08F00319BF5 /* MovieViewController.m */; };
 		35779C5A17A8C08F00319BF5 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5917A8C08F00319BF5 /* second.png */; };
 		35779C5C17A8C08F00319BF5 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C5B17A8C08F00319BF5 /* second@2x.png */; };
-		35779C6417A8C1A900319BF5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C6317A8C1A900319BF5 /* LoginViewController.m */; };
 		3578532617A8E1E000014AE0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532517A8E1E000014AE0 /* SystemConfiguration.framework */; };
 		3578532817A8E1EC00014AE0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */; };
+		357BB1B317AA625D002DC295 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1AD17AA625D002DC295 /* BookViewController.m */; };
+		357BB1B417AA625D002DC295 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1AF17AA625D002DC295 /* LoginViewController.m */; };
+		357BB1B517AA625D002DC295 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357BB1B017AA625D002DC295 /* LoginViewController.xib */; };
+		357BB1B617AA625D002DC295 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B217AA625D002DC295 /* MovieViewController.m */; };
+		357BB1BA17AA6282002DC295 /* DBBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B917AA6282002DC295 /* DBBook.m */; };
+		357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */; };
 		812A5991BC0647C0AF45E5CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115DEEE47292483A82C9B0C1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,19 +48,24 @@
 		35779C4817A8C08F00319BF5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		35779C4D17A8C08F00319BF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		35779C4F17A8C08F00319BF5 /* BookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookViewController.h; sourceTree = "<group>"; };
-		35779C5017A8C08F00319BF5 /* BookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookViewController.m; sourceTree = "<group>"; };
 		35779C5217A8C08F00319BF5 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		35779C5417A8C08F00319BF5 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		35779C5617A8C08F00319BF5 /* MovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
-		35779C5717A8C08F00319BF5 /* MovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		35779C5917A8C08F00319BF5 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		35779C5B17A8C08F00319BF5 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		35779C6217A8C1A900319BF5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		35779C6317A8C1A900319BF5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		35779C6517A8D97D00319BF5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3578532517A8E1E000014AE0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		357BB1AC17AA625D002DC295 /* BookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookViewController.h; sourceTree = "<group>"; };
+		357BB1AD17AA625D002DC295 /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookViewController.m; sourceTree = "<group>"; };
+		357BB1AE17AA625D002DC295 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		357BB1AF17AA625D002DC295 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		357BB1B017AA625D002DC295 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		357BB1B117AA625D002DC295 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
+		357BB1B217AA625D002DC295 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
+		357BB1B817AA6282002DC295 /* DBBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBBook.h; sourceTree = "<group>"; };
+		357BB1B917AA6282002DC295 /* DBBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBBook.m; sourceTree = "<group>"; };
+		357BB1BB17AA6F10002DC295 /* MyDoubanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoubanViewController.h; sourceTree = "<group>"; };
+		357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoubanViewController.m; sourceTree = "<group>"; };
 		E476C7EAAE8C49B79275C644 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -115,17 +123,13 @@
 				35779C4317A8C08F00319BF5 /* AppDelegate.h */,
 				35779C4417A8C08F00319BF5 /* AppDelegate.m */,
 				35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */,
-				35779C4F17A8C08F00319BF5 /* BookViewController.h */,
-				35779C5017A8C08F00319BF5 /* BookViewController.m */,
 				35779C5217A8C08F00319BF5 /* first.png */,
 				35779C5417A8C08F00319BF5 /* first@2x.png */,
-				35779C5617A8C08F00319BF5 /* MovieViewController.h */,
-				35779C5717A8C08F00319BF5 /* MovieViewController.m */,
 				35779C5917A8C08F00319BF5 /* second.png */,
 				35779C5B17A8C08F00319BF5 /* second@2x.png */,
-				35779C6217A8C1A900319BF5 /* LoginViewController.h */,
-				35779C6317A8C1A900319BF5 /* LoginViewController.m */,
 				35779C6517A8D97D00319BF5 /* Constants.h */,
+				357BB1B717AA6265002DC295 /* Model */,
+				357BB1AB17AA625D002DC295 /* Controller */,
 				35779C3B17A8C08F00319BF5 /* Supporting Files */,
 			);
 			path = MyDouban;
@@ -143,6 +147,31 @@
 				35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		357BB1AB17AA625D002DC295 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				357BB1AC17AA625D002DC295 /* BookViewController.h */,
+				357BB1AD17AA625D002DC295 /* BookViewController.m */,
+				357BB1BB17AA6F10002DC295 /* MyDoubanViewController.h */,
+				357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */,
+				357BB1AE17AA625D002DC295 /* LoginViewController.h */,
+				357BB1AF17AA625D002DC295 /* LoginViewController.m */,
+				357BB1B017AA625D002DC295 /* LoginViewController.xib */,
+				357BB1B117AA625D002DC295 /* MovieViewController.h */,
+				357BB1B217AA625D002DC295 /* MovieViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		357BB1B717AA6265002DC295 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				357BB1B817AA6282002DC295 /* DBBook.h */,
+				357BB1B917AA6282002DC295 /* DBBook.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +236,7 @@
 				35779C5517A8C08F00319BF5 /* first@2x.png in Resources */,
 				35779C5A17A8C08F00319BF5 /* second.png in Resources */,
 				35779C5C17A8C08F00319BF5 /* second@2x.png in Resources */,
+				357BB1B517AA625D002DC295 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,9 +282,11 @@
 			files = (
 				35779C4117A8C08F00319BF5 /* main.m in Sources */,
 				35779C4517A8C08F00319BF5 /* AppDelegate.m in Sources */,
-				35779C5117A8C08F00319BF5 /* BookViewController.m in Sources */,
-				35779C5817A8C08F00319BF5 /* MovieViewController.m in Sources */,
-				35779C6417A8C1A900319BF5 /* LoginViewController.m in Sources */,
+				357BB1B317AA625D002DC295 /* BookViewController.m in Sources */,
+				357BB1B417AA625D002DC295 /* LoginViewController.m in Sources */,
+				357BB1B617AA625D002DC295 /* MovieViewController.m in Sources */,
+				357BB1BA17AA6282002DC295 /* DBBook.m in Sources */,
+				357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

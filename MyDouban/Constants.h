@@ -12,3 +12,12 @@
 #define URL_AUTHORIZE   @"https://www.douban.com/service/auth2/auth"
 #define URL_TOKEN       @"https://www.douban.com/service/auth2/token"
 #define URL_REDIRECT    @"http://www.phaibin.tk"
+
+#define USER_DEFAULTS_ACCESSTOKEN   @"USER_DEFAULTS_ACCESSTOKEN"
+#define USER_DEFAULTS_REFRESHTOKEN  @"USER_DEFAULTS_REFRESHTOKEN"
+#define USER_DEFAULTS_USERID        @"USER_DEFAULTS_USERID"
+#define USER_DEFAULTS_USERNAME      @"USER_DEFAULTS_USERNAME"
+
+#define THE_APPDELEGATE ((AppDelegate *)([UIApplication sharedApplication].delegate))
+
+#define URL_BOOK_COLLECTIONS    @"https://api.douban.com/v2/book/user/%@/collections"

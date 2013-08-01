@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_ACCESSTOKEN];
+    self.refreshToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_REFRESHTOKEN];
+    self.userId = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERID];
+    self.userName = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERNAME];
     return YES;
 }
 							

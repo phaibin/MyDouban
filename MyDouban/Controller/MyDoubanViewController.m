@@ -20,14 +20,26 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        [self innerInit];
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self innerInit];
+}
+
+- (void)innerInit
+{
+    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_mydouban_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_mydouban.png"]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.title = @"我的豆瓣";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

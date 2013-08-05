@@ -44,6 +44,7 @@
     _bookList = [[NSMutableArray alloc] init];
     _pageNum = 0;
     _pageSize = 10;
+    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
 }
 
 - (void)viewDidLoad
@@ -73,7 +74,12 @@
 {
     NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTIONS, THE_APPDELEGATE.userId];
     NSDictionary *parameters = @{@"start": @(_pageNum*_pageSize)};
+    [SVProgressHUD show];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        if (_pageNum == 0) {
+            [self.bookList removeAllObjects];
+        }
         for (NSDictionary *dict in responseObject[@"collections"]) {
             DBBook *book = [[DBBook alloc] initWithDic:dict];
             [self.bookList addObject:book];
@@ -81,7 +87,8 @@
         _hasNext = self.bookList.count < [responseObject[@"total"] intValue];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [SVProgressHUD dismiss];
+        _hasNext = NO;
     }];
 }
 
@@ -100,6 +107,10 @@
     // Configure the cell...
     DBBook *book = self.bookList[indexPath.row];
     cell.textLabel.text = book.name;
+    if (indexPath.row == self.bookList.count-5 && _hasNext) {
+        _pageNum++;
+        [self getData];
+    }
     return cell;
 }
 

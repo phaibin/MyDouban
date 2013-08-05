@@ -17,6 +17,12 @@
     self.refreshToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_REFRESHTOKEN];
     self.userId = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERID];
     self.userName = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERNAME];
+    
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"bg_tabBar.png"]];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selection.png"]];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithWhite:0.5 alpha:1], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithWhite:0.85 alpha:1], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil] forState:UIControlStateSelected];
+    
     return YES;
 }
 							

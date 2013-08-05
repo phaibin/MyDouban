@@ -43,12 +43,14 @@
     _bookList = [[NSMutableArray alloc] init];
     _pageNum = 0;
     _pageSize = 10;
+     [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_movie_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_movie.png"]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"电影";
+   
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -90,7 +92,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"BookCell";
+    static NSString *CellIdentifier = @"MovieCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...

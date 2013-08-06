@@ -40,6 +40,18 @@
 		35E6FB3517AF59FC00BD9B07 /* icon_mydouban.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB2917AF59FC00BD9B07 /* icon_mydouban.png */; };
 		35E6FB3617AF59FC00BD9B07 /* icon_mydouban@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB2A17AF59FC00BD9B07 /* icon_mydouban@2x.png */; };
 		35E6FB3B17AF830800BD9B07 /* tabbar_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB3A17AF830800BD9B07 /* tabbar_selection.png */; };
+		35E6FB3F17AF8A8200BD9B07 /* BookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E6FB3E17AF8A8200BD9B07 /* BookCell.m */; };
+		35E6FB4117AF8EC300BD9B07 /* book_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4017AF8EC300BD9B07 /* book_default.png */; };
+		35E6FB4417AF931800BD9B07 /* bg_topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4217AF931800BD9B07 /* bg_topBar.png */; };
+		35E6FB4517AF931800BD9B07 /* bg_topBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4317AF931800BD9B07 /* bg_topBar@2x.png */; };
+		35E6FB4817AF958200BD9B07 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E6FB4717AF958200BD9B07 /* SearchViewController.m */; };
+		35E6FB4D17AF97BF00BD9B07 /* icon_setting_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4917AF97BF00BD9B07 /* icon_setting_active.png */; };
+		35E6FB4E17AF97BF00BD9B07 /* icon_setting_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4A17AF97BF00BD9B07 /* icon_setting_active@2x.png */; };
+		35E6FB4F17AF97BF00BD9B07 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4B17AF97BF00BD9B07 /* icon_setting.png */; };
+		35E6FB5017AF97BF00BD9B07 /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4C17AF97BF00BD9B07 /* icon_setting@2x.png */; };
+		35E6FB5317AF9BBF00BD9B07 /* icon_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB5117AF9BBF00BD9B07 /* icon_back.png */; };
+		35E6FB5417AF9BBF00BD9B07 /* icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB5217AF9BBF00BD9B07 /* icon_back@2x.png */; };
+		35E6FB5717AFA10800BD9B07 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E6FB5617AFA10800BD9B07 /* SearchResultViewController.m */; };
 		812A5991BC0647C0AF45E5CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115DEEE47292483A82C9B0C1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +100,21 @@
 		35E6FB2917AF59FC00BD9B07 /* icon_mydouban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_mydouban.png; sourceTree = "<group>"; };
 		35E6FB2A17AF59FC00BD9B07 /* icon_mydouban@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_mydouban@2x.png"; sourceTree = "<group>"; };
 		35E6FB3A17AF830800BD9B07 /* tabbar_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_selection.png; sourceTree = "<group>"; };
+		35E6FB3D17AF8A8200BD9B07 /* BookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCell.h; sourceTree = "<group>"; };
+		35E6FB3E17AF8A8200BD9B07 /* BookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCell.m; sourceTree = "<group>"; };
+		35E6FB4017AF8EC300BD9B07 /* book_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_default.png; sourceTree = "<group>"; };
+		35E6FB4217AF931800BD9B07 /* bg_topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_topBar.png; sourceTree = "<group>"; };
+		35E6FB4317AF931800BD9B07 /* bg_topBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_topBar@2x.png"; sourceTree = "<group>"; };
+		35E6FB4617AF958200BD9B07 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		35E6FB4717AF958200BD9B07 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		35E6FB4917AF97BF00BD9B07 /* icon_setting_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting_active.png; sourceTree = "<group>"; };
+		35E6FB4A17AF97BF00BD9B07 /* icon_setting_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting_active@2x.png"; sourceTree = "<group>"; };
+		35E6FB4B17AF97BF00BD9B07 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting.png; sourceTree = "<group>"; };
+		35E6FB4C17AF97BF00BD9B07 /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
+		35E6FB5117AF9BBF00BD9B07 /* icon_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back.png; sourceTree = "<group>"; };
+		35E6FB5217AF9BBF00BD9B07 /* icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@2x.png"; sourceTree = "<group>"; };
+		35E6FB5517AFA10800BD9B07 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
+		35E6FB5617AFA10800BD9B07 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		E476C7EAAE8C49B79275C644 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -146,6 +173,7 @@
 				35779C4417A8C08F00319BF5 /* AppDelegate.m */,
 				35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */,
 				35779C6517A8D97D00319BF5 /* Constants.h */,
+				35E6FB3C17AF8A4F00BD9B07 /* CustomView */,
 				35E6FB1A17AF56BB00BD9B07 /* Images */,
 				357BB1B717AA6265002DC295 /* Model */,
 				357BB1AB17AA625D002DC295 /* Controller */,
@@ -171,15 +199,19 @@
 		357BB1AB17AA625D002DC295 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				35E6FB4617AF958200BD9B07 /* SearchViewController.h */,
+				35E6FB4717AF958200BD9B07 /* SearchViewController.m */,
 				357BB1AC17AA625D002DC295 /* BookViewController.h */,
 				357BB1AD17AA625D002DC295 /* BookViewController.m */,
+				357BB1B117AA625D002DC295 /* MovieViewController.h */,
+				357BB1B217AA625D002DC295 /* MovieViewController.m */,
 				357BB1BB17AA6F10002DC295 /* MyDoubanViewController.h */,
 				357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */,
 				357BB1AE17AA625D002DC295 /* LoginViewController.h */,
 				357BB1AF17AA625D002DC295 /* LoginViewController.m */,
 				357BB1B017AA625D002DC295 /* LoginViewController.xib */,
-				357BB1B117AA625D002DC295 /* MovieViewController.h */,
-				357BB1B217AA625D002DC295 /* MovieViewController.m */,
+				35E6FB5517AFA10800BD9B07 /* SearchResultViewController.h */,
+				35E6FB5617AFA10800BD9B07 /* SearchResultViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,6 +228,11 @@
 		35E6FB1A17AF56BB00BD9B07 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				35E6FB5117AF9BBF00BD9B07 /* icon_back.png */,
+				35E6FB5217AF9BBF00BD9B07 /* icon_back@2x.png */,
+				35E6FB4217AF931800BD9B07 /* bg_topBar.png */,
+				35E6FB4317AF931800BD9B07 /* bg_topBar@2x.png */,
+				35E6FB4017AF8EC300BD9B07 /* book_default.png */,
 				35E6FB3A17AF830800BD9B07 /* tabbar_selection.png */,
 				35E6FB1B17AF56C700BD9B07 /* bg_tabBar.png */,
 				35E6FB1C17AF56C700BD9B07 /* bg_tabBar@2x.png */,
@@ -211,8 +248,21 @@
 				35E6FB2817AF59FC00BD9B07 /* icon_mydouban_active@2x.png */,
 				35E6FB2917AF59FC00BD9B07 /* icon_mydouban.png */,
 				35E6FB2A17AF59FC00BD9B07 /* icon_mydouban@2x.png */,
+				35E6FB4917AF97BF00BD9B07 /* icon_setting_active.png */,
+				35E6FB4A17AF97BF00BD9B07 /* icon_setting_active@2x.png */,
+				35E6FB4B17AF97BF00BD9B07 /* icon_setting.png */,
+				35E6FB4C17AF97BF00BD9B07 /* icon_setting@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		35E6FB3C17AF8A4F00BD9B07 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				35E6FB3D17AF8A8200BD9B07 /* BookCell.h */,
+				35E6FB3E17AF8A8200BD9B07 /* BookCell.m */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +339,15 @@
 				35E6FB3517AF59FC00BD9B07 /* icon_mydouban.png in Resources */,
 				35E6FB3617AF59FC00BD9B07 /* icon_mydouban@2x.png in Resources */,
 				35E6FB3B17AF830800BD9B07 /* tabbar_selection.png in Resources */,
+				35E6FB4117AF8EC300BD9B07 /* book_default.png in Resources */,
+				35E6FB4417AF931800BD9B07 /* bg_topBar.png in Resources */,
+				35E6FB4517AF931800BD9B07 /* bg_topBar@2x.png in Resources */,
+				35E6FB4D17AF97BF00BD9B07 /* icon_setting_active.png in Resources */,
+				35E6FB4E17AF97BF00BD9B07 /* icon_setting_active@2x.png in Resources */,
+				35E6FB4F17AF97BF00BD9B07 /* icon_setting.png in Resources */,
+				35E6FB5017AF97BF00BD9B07 /* icon_setting@2x.png in Resources */,
+				35E6FB5317AF9BBF00BD9B07 /* icon_back.png in Resources */,
+				35E6FB5417AF9BBF00BD9B07 /* icon_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +398,9 @@
 				357BB1B617AA625D002DC295 /* MovieViewController.m in Sources */,
 				357BB1BA17AA6282002DC295 /* DBBook.m in Sources */,
 				357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */,
+				35E6FB3F17AF8A8200BD9B07 /* BookCell.m in Sources */,
+				35E6FB4817AF958200BD9B07 /* SearchViewController.m in Sources */,
+				35E6FB5717AFA10800BD9B07 /* SearchResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

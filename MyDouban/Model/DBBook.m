@@ -16,6 +16,7 @@
         self.bookId = dict[@"book_id"];
         self.name = dict[@"book"][@"title"];
         self.authors = dict[@"book"][@"author"];
+        self.coverImageUrl = dict[@"book"][@"images"][@"medium"];
     }
     return self;
 }

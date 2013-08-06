@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *bookId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSArray *authors;
+@property (nonatomic, copy) NSString *coverImageUrl;
 
 - (id)initWithDic:(NSDictionary *)dict;
 

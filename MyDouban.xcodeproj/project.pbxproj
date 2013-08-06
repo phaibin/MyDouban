@@ -25,6 +25,7 @@
 		357BB1B617AA625D002DC295 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B217AA625D002DC295 /* MovieViewController.m */; };
 		357BB1BA17AA6282002DC295 /* DBBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B917AA6282002DC295 /* DBBook.m */; };
 		357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */; };
+		35B3080117B0FD1F00008360 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3080017B0FD1F00008360 /* MovieCell.m */; };
 		35E6FB1D17AF56C700BD9B07 /* bg_tabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB1B17AF56C700BD9B07 /* bg_tabBar.png */; };
 		35E6FB1E17AF56C700BD9B07 /* bg_tabBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB1C17AF56C700BD9B07 /* bg_tabBar@2x.png */; };
 		35E6FB2B17AF59FC00BD9B07 /* icon_book_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB1F17AF59FC00BD9B07 /* icon_book_active.png */; };
@@ -85,6 +86,8 @@
 		357BB1B917AA6282002DC295 /* DBBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBBook.m; sourceTree = "<group>"; };
 		357BB1BB17AA6F10002DC295 /* MyDoubanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoubanViewController.h; sourceTree = "<group>"; };
 		357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoubanViewController.m; sourceTree = "<group>"; };
+		35B307FF17B0FD1F00008360 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		35B3080017B0FD1F00008360 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 		35E6FB1B17AF56C700BD9B07 /* bg_tabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tabBar.png; sourceTree = "<group>"; };
 		35E6FB1C17AF56C700BD9B07 /* bg_tabBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_tabBar@2x.png"; sourceTree = "<group>"; };
 		35E6FB1F17AF59FC00BD9B07 /* icon_book_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_book_active.png; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 			children = (
 				35E6FB3D17AF8A8200BD9B07 /* BookCell.h */,
 				35E6FB3E17AF8A8200BD9B07 /* BookCell.m */,
+				35B307FF17B0FD1F00008360 /* MovieCell.h */,
+				35B3080017B0FD1F00008360 /* MovieCell.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 				35E6FB3F17AF8A8200BD9B07 /* BookCell.m in Sources */,
 				35E6FB4817AF958200BD9B07 /* SearchViewController.m in Sources */,
 				35E6FB5717AFA10800BD9B07 /* SearchResultViewController.m in Sources */,
+				35B3080117B0FD1F00008360 /* MovieCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

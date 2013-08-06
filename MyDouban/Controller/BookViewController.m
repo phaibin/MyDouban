@@ -10,7 +10,6 @@
 #import "LoginViewController.h"
 #import "DBBook.h"
 #import "BookCell.h"
-#import "UIImageView+WebCache.h"
 
 @interface BookViewController ()
 
@@ -108,20 +107,7 @@
     
     // Configure the cell...
     DBBook *book = self.bookList[indexPath.row];
-    cell.nameLabel.text = book.name;
-    cell.authorLabel.text = [book.authors componentsJoinedByString:@" "];
-    __weak typeof(cell) weakCell = cell;
-    [weakCell.coverImageView setImageWithURL:[NSURL URLWithString:book.coverImageUrl] placeholderImage:[UIImage imageNamed:@"book_default.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        if (image) {
-            weakCell.coverImageView.image = image;
-            if (cacheType == SDImageCacheTypeNone) {
-                weakCell.coverImageView.alpha = 0;
-                [UIView animateWithDuration:0.3 animations:^{
-                    weakCell.coverImageView.alpha = 1;
-                }];
-            }
-        }
-    }];
+    [cell setBook:book];
     
     if (indexPath.row == self.bookList.count-5 && _hasNext) {
         _pageNum++;

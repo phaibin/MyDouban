@@ -11,24 +11,29 @@
 #import "DBBook.h"
 #import "BookCell.h"
 
-@interface BookViewController ()
+#define ShowModeWantRead    0
+#define ShowModeReading     1
+#define ShowModeHasRead     2
 
-@property (nonatomic, strong) NSMutableArray *bookList;
+@interface BookViewController ()
 
 @end
 
 @implementation BookViewController
 {
-    int _pageNum;
-    int _pageSize;
-    BOOL _hasNext;
+    NSMutableArray *_pageNumArray;
+    NSMutableArray *_pageSizeArray;
+    NSMutableArray *_hasNextArray;
+    NSMutableArray *_bookListArray;
+    NSArray *_tableViews;
+
+    int _showMode;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         [self innerInit];
     }
     return self;
@@ -42,9 +47,11 @@
 
 - (void)innerInit
 {
-    _bookList = [[NSMutableArray alloc] init];
-    _pageNum = 0;
-    _pageSize = 10;
+    _pageNumArray = [NSMutableArray arrayWithArray:@[@(0), @(0), @(0)]];
+    _pageSizeArray = [NSMutableArray arrayWithArray:@[@(10), @(10), @(10)]];
+    _hasNextArray = [NSMutableArray arrayWithArray:@[@(NO), @(NO), @(NO)]];
+    _bookListArray = [NSMutableArray arrayWithArray:@[[[NSMutableArray alloc] init], [[NSMutableArray alloc] init], [[NSMutableArray alloc] init]]];
+    
     [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
 }
 
@@ -57,6 +64,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _tableViews = @[self.wantReadTableView, self.readingTableView, self.hasReadTableView];
     if (THE_APPDELEGATE.accessToken && THE_APPDELEGATE.accessToken.length > 0) {
         [self getData];
     } else {
@@ -74,30 +82,52 @@
 - (void)getData
 {
     NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTIONS, THE_APPDELEGATE.userId];
-    NSDictionary *parameters = @{@"start": @(_pageNum*_pageSize)};
+    int pageNum = [_pageNumArray[_showMode] intValue];
+    int pageSize = [_pageSizeArray[_showMode] intValue];
+    NSMutableArray *bookList = _bookListArray[_showMode];
+    NSString *status = @"";
+    switch (_showMode) {
+        case ShowModeWantRead:
+            status = @"wish";
+            break;
+        case ShowModeReading:
+            status = @"reading";
+            break;
+        case ShowModeHasRead:
+            status = @"read";
+            break;
+        default:
+            break;
+    }
+    NSDictionary *parameters = @{@"start":@(pageNum*pageSize), @"count":@(pageSize), @"status":status};
     [SVProgressHUD show];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
-        if (_pageNum == 0) {
-            [self.bookList removeAllObjects];
+        if (pageNum == 0) {
+            [bookList removeAllObjects];
         }
         for (NSDictionary *dict in responseObject[@"collections"]) {
-            DBBook *book = [[DBBook alloc] initWithDic:dict];
-            [self.bookList addObject:book];
+            DBBook *book = [[DBBook alloc] initWithDict:dict];
+            [bookList addObject:book];
         }
-        _hasNext = self.bookList.count < [responseObject[@"total"] intValue];
-        [self.tableView reloadData];
+        _hasNextArray[_showMode] = @(bookList.count < [responseObject[@"total"] intValue]);
+        [_tableViews[_showMode] reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-        _hasNext = NO;
+        _hasNextArray[_showMode] = @(NO);
     }];
 }
 
 #pragma mark - Table view data source
 
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.bookList.count;
+    return [_bookListArray[_showMode] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,11 +136,11 @@
     BookCell *cell = (BookCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    DBBook *book = self.bookList[indexPath.row];
+    DBBook *book = _bookListArray[_showMode][indexPath.row];
     [cell setBook:book];
     
-    if (indexPath.row == self.bookList.count-5 && _hasNext) {
-        _pageNum++;
+    if (indexPath.row == [_bookListArray[_showMode] count]-5 && [_hasNextArray[_showMode] boolValue]) {
+        _pageNumArray[_showMode] = @([_pageNumArray[_showMode] intValue] + 1);
         [self getData];
     }
     return cell;
@@ -166,6 +196,28 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)viewDidUnload {
+    [self setWantReadTableView:nil];
+    [self setReadingTableView:nil];
+    [self setHasReadTableView:nil];
+    [super viewDidUnload];
+}
+
+- (IBAction)showModeChanged:(id)sender
+{
+    self.wantReadTableView.hidden = YES;
+    self.readingTableView.hidden = YES;
+    self.hasReadTableView.hidden = YES;
+    
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    _showMode = segmentedControl.selectedSegmentIndex;
+    UITableView *tableView = _tableViews[_showMode];
+    tableView.hidden = NO;
+    [tableView reloadData];
+    if ([_bookListArray[_showMode] count] == 0)
+        [self getData];
 }
 
 @end

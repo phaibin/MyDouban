@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35037D5817B4C16C00A2C502 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35037D5717B4C16C00A2C502 /* HomeViewController.m */; };
+		35037D5B17B4DA9E00A2C502 /* DBMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 35037D5A17B4DA9E00A2C502 /* DBMovie.m */; };
 		35779C3517A8C08F00319BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35779C3417A8C08F00319BF5 /* UIKit.framework */; };
 		35779C3717A8C08F00319BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35779C3617A8C08F00319BF5 /* Foundation.framework */; };
 		35779C3917A8C08F00319BF5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35779C3817A8C08F00319BF5 /* CoreGraphics.framework */; };
@@ -45,19 +47,21 @@
 		35E6FB4117AF8EC300BD9B07 /* book_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4017AF8EC300BD9B07 /* book_default.png */; };
 		35E6FB4417AF931800BD9B07 /* bg_topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4217AF931800BD9B07 /* bg_topBar.png */; };
 		35E6FB4517AF931800BD9B07 /* bg_topBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4317AF931800BD9B07 /* bg_topBar@2x.png */; };
-		35E6FB4817AF958200BD9B07 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E6FB4717AF958200BD9B07 /* SearchViewController.m */; };
 		35E6FB4D17AF97BF00BD9B07 /* icon_setting_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4917AF97BF00BD9B07 /* icon_setting_active.png */; };
 		35E6FB4E17AF97BF00BD9B07 /* icon_setting_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4A17AF97BF00BD9B07 /* icon_setting_active@2x.png */; };
 		35E6FB4F17AF97BF00BD9B07 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4B17AF97BF00BD9B07 /* icon_setting.png */; };
 		35E6FB5017AF97BF00BD9B07 /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB4C17AF97BF00BD9B07 /* icon_setting@2x.png */; };
 		35E6FB5317AF9BBF00BD9B07 /* icon_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB5117AF9BBF00BD9B07 /* icon_back.png */; };
 		35E6FB5417AF9BBF00BD9B07 /* icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E6FB5217AF9BBF00BD9B07 /* icon_back@2x.png */; };
-		35E6FB5717AFA10800BD9B07 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E6FB5617AFA10800BD9B07 /* SearchResultViewController.m */; };
 		812A5991BC0647C0AF45E5CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115DEEE47292483A82C9B0C1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		115DEEE47292483A82C9B0C1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		35037D5617B4C16C00A2C502 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		35037D5717B4C16C00A2C502 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		35037D5917B4DA9E00A2C502 /* DBMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMovie.h; sourceTree = "<group>"; };
+		35037D5A17B4DA9E00A2C502 /* DBMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMovie.m; sourceTree = "<group>"; };
 		35779C3117A8C08F00319BF5 /* MyDouban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDouban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35779C3417A8C08F00319BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		35779C3617A8C08F00319BF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,16 +112,12 @@
 		35E6FB4017AF8EC300BD9B07 /* book_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_default.png; sourceTree = "<group>"; };
 		35E6FB4217AF931800BD9B07 /* bg_topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_topBar.png; sourceTree = "<group>"; };
 		35E6FB4317AF931800BD9B07 /* bg_topBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_topBar@2x.png"; sourceTree = "<group>"; };
-		35E6FB4617AF958200BD9B07 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		35E6FB4717AF958200BD9B07 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		35E6FB4917AF97BF00BD9B07 /* icon_setting_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting_active.png; sourceTree = "<group>"; };
 		35E6FB4A17AF97BF00BD9B07 /* icon_setting_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting_active@2x.png"; sourceTree = "<group>"; };
 		35E6FB4B17AF97BF00BD9B07 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting.png; sourceTree = "<group>"; };
 		35E6FB4C17AF97BF00BD9B07 /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
 		35E6FB5117AF9BBF00BD9B07 /* icon_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back.png; sourceTree = "<group>"; };
 		35E6FB5217AF9BBF00BD9B07 /* icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@2x.png"; sourceTree = "<group>"; };
-		35E6FB5517AFA10800BD9B07 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
-		35E6FB5617AFA10800BD9B07 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		E476C7EAAE8C49B79275C644 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -202,8 +202,8 @@
 		357BB1AB17AA625D002DC295 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				35E6FB4617AF958200BD9B07 /* SearchViewController.h */,
-				35E6FB4717AF958200BD9B07 /* SearchViewController.m */,
+				35037D5617B4C16C00A2C502 /* HomeViewController.h */,
+				35037D5717B4C16C00A2C502 /* HomeViewController.m */,
 				357BB1AC17AA625D002DC295 /* BookViewController.h */,
 				357BB1AD17AA625D002DC295 /* BookViewController.m */,
 				357BB1B117AA625D002DC295 /* MovieViewController.h */,
@@ -213,8 +213,6 @@
 				357BB1AE17AA625D002DC295 /* LoginViewController.h */,
 				357BB1AF17AA625D002DC295 /* LoginViewController.m */,
 				357BB1B017AA625D002DC295 /* LoginViewController.xib */,
-				35E6FB5517AFA10800BD9B07 /* SearchResultViewController.h */,
-				35E6FB5617AFA10800BD9B07 /* SearchResultViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,6 +222,8 @@
 			children = (
 				357BB1B817AA6282002DC295 /* DBBook.h */,
 				357BB1B917AA6282002DC295 /* DBBook.m */,
+				35037D5917B4DA9E00A2C502 /* DBMovie.h */,
+				35037D5A17B4DA9E00A2C502 /* DBMovie.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,9 +404,9 @@
 				357BB1BA17AA6282002DC295 /* DBBook.m in Sources */,
 				357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */,
 				35E6FB3F17AF8A8200BD9B07 /* BookCell.m in Sources */,
-				35E6FB4817AF958200BD9B07 /* SearchViewController.m in Sources */,
-				35E6FB5717AFA10800BD9B07 /* SearchResultViewController.m in Sources */,
 				35B3080117B0FD1F00008360 /* MovieCell.m in Sources */,
+				35037D5817B4C16C00A2C502 /* HomeViewController.m in Sources */,
+				35037D5B17B4DA9E00A2C502 /* DBMovie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

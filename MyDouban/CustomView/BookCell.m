@@ -38,6 +38,22 @@
         self.readingButton.hidden = YES;
     else if (book.status == DBBookStatusHasRead)
         self.hasReadButton.hidden = YES;
+    
+    self.hasReadButton.frame = CGRectMake(245, 62, 55, 28);
+    if (self.hasReadButton.hidden) {
+        self.readingButton.frame = self.hasReadButton.frame;
+    } else {
+        CGRect frame = self.hasReadButton.frame;
+        frame.origin.x = frame.origin.x - frame.size.width - 10;
+        self.readingButton.frame = frame;
+    }
+    if (self.readingButton.hidden) {
+        self.wantReadButton.frame = self.readingButton.frame;
+    } else {
+        CGRect frame = self.readingButton.frame;
+        frame.origin.x = frame.origin.x - frame.size.width - 10;
+        self.wantReadButton.frame = frame;
+    }
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -58,17 +74,29 @@
 
 - (IBAction)wantReadTapped:(id)sender
 {
-    
+    [self.book changeStatus:DBBookStatusWantRead success:^{
+        [self.delegate bookStatusChanged:self.book];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 - (IBAction)readingTapped:(id)sender
 {
-    
+    [self.book changeStatus:DBBookStatusReading success:^{
+        [self.delegate bookStatusChanged:self.book];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 - (IBAction)hasReadTapped:(id)sender
 {
-    
+    [self.book changeStatus:DBBookStatusHasRead success:^{
+        [self.delegate bookStatusChanged:self.book];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 @end

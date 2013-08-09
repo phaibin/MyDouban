@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    DBBookStatusWantRead = 0,
+    DBBookStatusNone = 0,
+    DBBookStatusWantRead = 1,
     DBBookStatusReading,
-    DBBookStatusHasRead
+    DBBookStatusHasRead,
 } DBBookStatus;
 
 @interface DBBook : NSObject
@@ -21,7 +22,11 @@ typedef enum {
 @property (nonatomic, strong) NSArray *authors;
 @property (nonatomic, copy) NSString *coverImageUrl;
 @property (nonatomic, assign) DBBookStatus status;
+@property (nonatomic, copy) NSString *statusString;
 
-- (id)initWithDic:(NSDictionary *)dict;
+- (id)initWithDict:(NSDictionary *)dict;
+- (id)initWithSearchDict:(NSDictionary *)dict;
+
+- (void)changeStatus:(DBBookStatus)status success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

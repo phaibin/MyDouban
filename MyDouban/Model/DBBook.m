@@ -10,14 +10,35 @@
 
 @implementation DBBook
 
-- (id)initWithDic:(NSDictionary *)dict
+- (NSString *)statusString
+{
+    switch (self.status) {
+        case DBBookStatusNone:
+            return @"none";
+            break;
+        case DBBookStatusWantRead:
+            return @"wish";
+            break;
+        case DBBookStatusReading:
+            return @"reading";
+            break;
+        case DBBookStatusHasRead:
+            return @"read";
+            break;
+        default:
+            return @"";
+            break;
+    }
+}
+
+- (id)initWithDict:(NSDictionary *)dict
 {
     if (self = [super init]) {
         self.bookId = dict[@"book_id"];
         self.name = dict[@"book"][@"title"];
         self.authors = dict[@"book"][@"author"];
         self.coverImageUrl = dict[@"book"][@"images"][@"medium"];
-        NSString *status = dict[@"book"][@"author"];
+        NSString *status = dict[@"status"];
         if ([status isEqualToString:@"wish"])
             self.status = DBBookStatusWantRead;
         else if ([status isEqualToString:@"reading"])
@@ -26,6 +47,53 @@
             self.status = DBBookStatusHasRead;
     }
     return self;
+}
+
+- (id)initWithSearchDict:(NSDictionary *)dict
+{
+    if (self = [super init]) {
+        self.bookId = dict[@"book_id"];
+        self.name = dict[@"title"];
+        self.authors = dict[@"author"];
+        self.coverImageUrl = dict[@"images"][@"medium"];
+        self.status = DBBookStatusNone;
+    }
+    return self;
+}
+
+- (void)changeStatus:(DBBookStatus)status success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+{
+    if (status == DBBookStatusNone) {
+        NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTION, self.bookId];
+        [SVProgressHUD show];
+        [[AFAppDotNetAPIClient sharedClient] deletePath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [SVProgressHUD dismiss];
+            if (success) {
+                success();
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            if (failure) {
+                failure(operation, error);
+            }
+        }];
+    } else {
+        NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTION, self.bookId];
+        NSDictionary *parameters = @{@"status":self.statusString};
+        [SVProgressHUD show];
+        [[AFAppDotNetAPIClient sharedClient] putPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [SVProgressHUD dismiss];
+            self.status = status;
+            if (success) {
+                success();
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            if (failure) {
+                failure(operation, error);
+            }
+        }];
+    }
 }
 
 @end

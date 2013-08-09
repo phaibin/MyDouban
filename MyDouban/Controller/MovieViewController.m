@@ -73,7 +73,7 @@
     NSDictionary *parameters = @{@"start": @(_pageNum*_pageSize)};
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary *dict in responseObject[@"collections"]) {
-            DBBook *book = [[DBBook alloc] initWithDic:dict];
+            DBBook *book = [[DBBook alloc] initWithDict:dict];
             [self.bookList addObject:book];
         }
         _hasNext = self.bookList.count < [responseObject[@"total"] intValue];

@@ -34,7 +34,6 @@ static NSString * const kAFAppDotNetAPIBaseURLString = @"https://alpha-api.app.n
     dispatch_once(&onceToken, ^{
         _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:kAFAppDotNetAPIBaseURLString]];
     });
-    
     return _sharedClient;
 }
 

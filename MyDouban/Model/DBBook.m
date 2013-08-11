@@ -10,9 +10,9 @@
 
 @implementation DBBook
 
-- (NSString *)statusString
++ (NSString *)statusStringForStatus:(DBBookStatus)status
 {
-    switch (self.status) {
+    switch (status) {
         case DBBookStatusNone:
             return @"none";
             break;
@@ -29,6 +29,11 @@
             return @"";
             break;
     }
+}
+
+- (NSString *)statusString
+{
+    return [[self class] statusStringForStatus:self.status];
 }
 
 - (id)initWithDict:(NSDictionary *)dict
@@ -52,7 +57,7 @@
 - (id)initWithSearchDict:(NSDictionary *)dict
 {
     if (self = [super init]) {
-        self.bookId = dict[@"book_id"];
+        self.bookId = dict[@"id"];
         self.name = dict[@"title"];
         self.authors = dict[@"author"];
         self.coverImageUrl = dict[@"images"][@"medium"];
@@ -66,6 +71,7 @@
     if (status == DBBookStatusNone) {
         NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTION, self.bookId];
         [SVProgressHUD show];
+        [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
         [[AFAppDotNetAPIClient sharedClient] deletePath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [SVProgressHUD dismiss];
             if (success) {
@@ -79,20 +85,37 @@
         }];
     } else {
         NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTION, self.bookId];
-        NSDictionary *parameters = @{@"status":self.statusString};
+        NSDictionary *parameters = @{@"status":[[self class] statusStringForStatus:status]};
         [SVProgressHUD show];
-        [[AFAppDotNetAPIClient sharedClient] putPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [SVProgressHUD dismiss];
-            self.status = status;
-            if (success) {
-                success();
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [SVProgressHUD dismiss];
-            if (failure) {
-                failure(operation, error);
-            }
-        }];
+        if (self.status == DBBookStatusNone) {
+            [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
+            [[AFAppDotNetAPIClient sharedClient] postPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                [SVProgressHUD dismiss];
+                self.status = status;
+                if (success) {
+                    success();
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [SVProgressHUD dismiss];
+                if (failure) {
+                    failure(operation, error);
+                }
+            }];
+        } else {
+            [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
+            [[AFAppDotNetAPIClient sharedClient] putPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                [SVProgressHUD dismiss];
+                self.status = status;
+                if (success) {
+                    success();
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [SVProgressHUD dismiss];
+                if (failure) {
+                    failure(operation, error);
+                }
+            }];
+        }
     }
 }
 

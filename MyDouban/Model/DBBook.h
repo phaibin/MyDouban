@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    DBBookStatusNone = 0,
-    DBBookStatusWantRead = 1,
+    DBBookStatusNone = -1,
+    DBBookStatusWantRead = 0,
     DBBookStatusReading,
     DBBookStatusHasRead,
 } DBBookStatus;
@@ -28,5 +28,7 @@ typedef enum {
 - (id)initWithSearchDict:(NSDictionary *)dict;
 
 - (void)changeStatus:(DBBookStatus)status success:(void (^)())success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
++ (NSString *)statusStringForStatus:(DBBookStatus)status;
 
 @end

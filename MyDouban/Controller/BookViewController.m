@@ -11,10 +11,6 @@
 #import "DBBook.h"
 #import "BookCell.h"
 
-#define ShowModeWantRead    0
-#define ShowModeReading     1
-#define ShowModeHasRead     2
-
 @interface BookViewController ()
 
 @end
@@ -27,7 +23,7 @@
     NSMutableArray *_bookListArray;
     NSArray *_tableViews;
 
-    int _showMode;
+    DBBookStatus _showStatus;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,6 +49,8 @@
     _bookListArray = [NSMutableArray arrayWithArray:@[[[NSMutableArray alloc] init], [[NSMutableArray alloc] init], [[NSMutableArray alloc] init]]];
     
     [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusChanged:) name:NOTIFICATION_CAHNGE_STATUS object:nil];
 }
 
 - (void)viewDidLoad
@@ -79,21 +77,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)statusChanged:(NSNotification *)notification
+{
+    [self reloadWithStatus:[notification.object intValue]];
+}
+
 - (void)getData
 {
     NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTIONS, THE_APPDELEGATE.userId];
-    int pageNum = [_pageNumArray[_showMode] intValue];
-    int pageSize = [_pageSizeArray[_showMode] intValue];
-    NSMutableArray *bookList = _bookListArray[_showMode];
+    int pageNum = [_pageNumArray[_showStatus] intValue];
+    int pageSize = [_pageSizeArray[_showStatus] intValue];
+    NSMutableArray *bookList = _bookListArray[_showStatus];
     NSString *status = @"";
-    switch (_showMode) {
-        case ShowModeWantRead:
+    switch (_showStatus) {
+        case DBBookStatusWantRead:
             status = @"wish";
             break;
-        case ShowModeReading:
+        case DBBookStatusReading:
             status = @"reading";
             break;
-        case ShowModeHasRead:
+        case DBBookStatusHasRead:
             status = @"read";
             break;
         default:
@@ -101,6 +104,7 @@
     }
     NSDictionary *parameters = @{@"start":@(pageNum*pageSize), @"count":@(pageSize), @"status":status};
     [SVProgressHUD show];
+    [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         if (pageNum == 0) {
@@ -110,12 +114,19 @@
             DBBook *book = [[DBBook alloc] initWithDict:dict];
             [bookList addObject:book];
         }
-        _hasNextArray[_showMode] = @(bookList.count < [responseObject[@"total"] intValue]);
-        [_tableViews[_showMode] reloadData];
+        _hasNextArray[_showStatus] = @(bookList.count < [responseObject[@"total"] intValue]);
+        [_tableViews[_showStatus] reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-        _hasNextArray[_showMode] = @(NO);
+        _hasNextArray[_showStatus] = @(NO);
     }];
+}
+
+- (void)reloadWithStatus:(DBBookStatus)status
+{
+    _showStatus = status;
+    _pageNumArray[_showStatus] = @0;
+    [self getData];
 }
 
 #pragma mark - Table view data source
@@ -127,7 +138,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_bookListArray[_showMode] count];
+    return [_bookListArray[_showStatus] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,11 +147,11 @@
     BookCell *cell = (BookCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    DBBook *book = _bookListArray[_showMode][indexPath.row];
+    DBBook *book = _bookListArray[_showStatus][indexPath.row];
     [cell setBook:book];
     
-    if (indexPath.row == [_bookListArray[_showMode] count]-5 && [_hasNextArray[_showMode] boolValue]) {
-        _pageNumArray[_showMode] = @([_pageNumArray[_showMode] intValue] + 1);
+    if (indexPath.row == [_bookListArray[_showStatus] count]-5 && [_hasNextArray[_showStatus] boolValue]) {
+        _pageNumArray[_showStatus] = @([_pageNumArray[_showStatus] intValue] + 1);
         [self getData];
     }
     return cell;
@@ -212,11 +223,11 @@
     self.hasReadTableView.hidden = YES;
     
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    _showMode = segmentedControl.selectedSegmentIndex;
-    UITableView *tableView = _tableViews[_showMode];
+    _showStatus = segmentedControl.selectedSegmentIndex;
+    UITableView *tableView = _tableViews[_showStatus];
     tableView.hidden = NO;
     [tableView reloadData];
-    if ([_bookListArray[_showMode] count] == 0)
+    if ([_bookListArray[_showStatus] count] == 0)
         [self getData];
 }
 

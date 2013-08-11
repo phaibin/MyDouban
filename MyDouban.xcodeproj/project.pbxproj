@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35037D5817B4C16C00A2C502 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35037D5717B4C16C00A2C502 /* HomeViewController.m */; };
 		35037D5B17B4DA9E00A2C502 /* DBMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 35037D5A17B4DA9E00A2C502 /* DBMovie.m */; };
+		35246F0C17B73B3D002A29B6 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 35246F0B17B73B3D002A29B6 /* AFAppDotNetAPIClient.m */; };
 		35779C3517A8C08F00319BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35779C3417A8C08F00319BF5 /* UIKit.framework */; };
 		35779C3717A8C08F00319BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35779C3617A8C08F00319BF5 /* Foundation.framework */; };
 		35779C3917A8C08F00319BF5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35779C3817A8C08F00319BF5 /* CoreGraphics.framework */; };
@@ -62,6 +63,8 @@
 		35037D5717B4C16C00A2C502 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		35037D5917B4DA9E00A2C502 /* DBMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMovie.h; sourceTree = "<group>"; };
 		35037D5A17B4DA9E00A2C502 /* DBMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMovie.m; sourceTree = "<group>"; };
+		35246F0A17B73B3D002A29B6 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
+		35246F0B17B73B3D002A29B6 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		35779C3117A8C08F00319BF5 /* MyDouban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDouban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35779C3417A8C08F00319BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		35779C3617A8C08F00319BF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -176,6 +179,8 @@
 				35779C4417A8C08F00319BF5 /* AppDelegate.m */,
 				35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */,
 				35779C6517A8D97D00319BF5 /* Constants.h */,
+				35246F0A17B73B3D002A29B6 /* AFAppDotNetAPIClient.h */,
+				35246F0B17B73B3D002A29B6 /* AFAppDotNetAPIClient.m */,
 				35E6FB3C17AF8A4F00BD9B07 /* CustomView */,
 				35E6FB1A17AF56BB00BD9B07 /* Images */,
 				357BB1B717AA6265002DC295 /* Model */,
@@ -407,6 +412,7 @@
 				35B3080117B0FD1F00008360 /* MovieCell.m in Sources */,
 				35037D5817B4C16C00A2C502 /* HomeViewController.m in Sources */,
 				35037D5B17B4DA9E00A2C502 /* DBMovie.m in Sources */,
+				35246F0C17B73B3D002A29B6 /* AFAppDotNetAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

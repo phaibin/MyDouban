@@ -10,7 +10,7 @@
 #import "BookCell.h"
 #import "MovieCell.h"
 
-@interface HomeViewController : UITableViewController<UISearchBarDelegate, BookCellDelegate>
+@interface HomeViewController : UITableViewController<UISearchBarDelegate, BookCellDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 

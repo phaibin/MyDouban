@@ -12,6 +12,4 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 
-- (IBAction)cancelTapped:(id)sender;
-
 @end

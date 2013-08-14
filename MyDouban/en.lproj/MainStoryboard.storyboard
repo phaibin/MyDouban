@@ -334,112 +334,49 @@
             </objects>
             <point key="canvasLocation" x="630" y="-149"/>
         </scene>
-        <!--Movie View Controller - 电影-->
-        <scene sceneID="vtj-ka-Qaz">
-            <objects>
-                <tableViewController id="Jkz-jd-kqR" customClass="MovieViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZjF-3V-uLc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.40000000000000002" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell" rowHeight="90" id="GSo-LK-hdO" customClass="MovieCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="90"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="yCM-dY-5c2">
-                                            <rect key="frame" x="7" y="8" width="50" height="73"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G9f-6T-8OU">
-                                            <rect key="frame" x="65" y="11" width="249" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                            <color key="textColor" white="0.26283074820000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oZF-oW-1i6">
-                                            <rect key="frame" x="65" y="34" width="249" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWb-Wq-YCz">
-                                            <rect key="frame" x="111" y="48" width="55" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="想看">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lXf-QM-aIk">
-                                            <rect key="frame" x="179" y="48" width="55" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="看过">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="authorLabel" destination="oZF-oW-1i6" id="MAw-Wo-89d"/>
-                                    <outlet property="coverImageView" destination="yCM-dY-5c2" id="dMw-iC-L7R"/>
-                                    <outlet property="nameLabel" destination="G9f-6T-8OU" id="cy5-PP-w7P"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Jkz-jd-kqR" id="iZB-qy-jyn"/>
-                            <outlet property="delegate" destination="Jkz-jd-kqR" id="xq3-Ww-b4H"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="电影" id="nIw-hg-dxe"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v2d-EP-qZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="643" y="457"/>
-        </scene>
         <!--My Douban View Controller - 我的豆瓣-->
         <scene sceneID="WuZ-no-iHH">
             <objects>
                 <tableViewController id="Ep7-fX-tk2" customClass="MyDoubanViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fiy-pt-457">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fiy-pt-457">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="q2s-Ds-vUQ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" red="0.93333339689999995" green="0.9450981021" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                        <sections>
+                            <tableViewSection id="jS6-8Z-ij4">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="q2s-Ds-vUQ">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zOV-Pb-Cnq">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YKl-lL-ZNq">
+                                        <rect key="frame" x="0.0" y="99" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我的豆瓣" id="WGL-Gq-cym">
-                        <barButtonItem key="rightBarButtonItem" title="登录" id="BnC-1c-jGb">
-                            <connections>
-                                <action selector="loginTapped:" destination="Ep7-fX-tk2" id="f57-Pk-D7f"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="我的豆瓣" id="WGL-Gq-cym"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIc-MZ-lbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -470,12 +407,36 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Jkz-jd-kqR" kind="relationship" relationship="rootViewController" id="5Ev-b6-Gjz"/>
+                        <segue destination="F8r-cr-tJh" kind="relationship" relationship="rootViewController" id="Xhc-Oh-Pid"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTD-bl-yAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="207" y="457"/>
+        </scene>
+        <!--Movie View Controller-->
+        <scene sceneID="bZ5-Pl-O5m">
+            <objects>
+                <viewController id="F8r-cr-tJh" customClass="MovieViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wGT-UB-dZw">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="开发中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PxI-cn-FKV">
+                                <rect key="frame" x="0.0" y="158" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333339689999995" green="0.9450981021" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sgw-KI-bfT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXN-Bv-Qx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="459"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -506,8 +467,8 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cOp-SK-NFB">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="4Hs-Gd-n7P">
+                        <color key="backgroundColor" red="0.93333339689999995" green="0.9450981021" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackTranslucent" text="" placeholder="搜索图书、电影" id="4Hs-Gd-n7P">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -693,58 +654,9 @@
         <image name="icon_mydouban.png" width="24" height="21"/>
         <image name="icon_setting.png" width="80" height="49"/>
     </resources>
-    <classes>
-        <class className="BookCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookCell.h"/>
-            <relationships>
-                <relationship kind="action" name="hasReadTapped:"/>
-                <relationship kind="action" name="readingTapped:"/>
-                <relationship kind="action" name="wantReadTapped:"/>
-                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hasReadButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="readingButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="wantReadButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="BookViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showModeChanged:"/>
-                <relationship kind="outlet" name="hasReadTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="modeSegment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="readingTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="wantReadTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="HomeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="MovieCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MovieViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieViewController.h"/>
-        </class>
-        <class className="MyDoubanViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyDoubanViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginTapped:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

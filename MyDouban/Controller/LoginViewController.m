@@ -11,6 +11,7 @@
 #import "AFAppDotNetAPIClient.h"
 #import "JSONKit.h"
 #import "AppDelegate.h"
+#import "UIBarButtonItem+Extension.h"
 
 @interface LoginViewController ()
 
@@ -32,7 +33,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"授权";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTapped:)];
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"取消" style:ExtendBarButtonItemStyleBlue target:self action:@selector(cancelTapped:)];
     
     NSDictionary *parameters = @{@"client_id":APP_KEY, @"redirect_uri":URL_REDIRECT, @"response_type":@"code"};
     NSURLRequest *request = [[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@""]] requestWithMethod:@"GET" path:URL_AUTHORIZE parameters:parameters];

@@ -16,6 +16,7 @@
 {
     NSMutableArray *_bookList;
     NSMutableArray *_movieList;
+    UITapGestureRecognizer *_tapGesture;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,6 +39,10 @@
 {
     _bookList = [[NSMutableArray alloc] init];
     _movieList = [[NSMutableArray alloc] init];
+    
+    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    _tapGesture.delegate = self;
+    [self.view addGestureRecognizer:_tapGesture];
 }
 
 - (void)viewDidLoad
@@ -202,6 +207,11 @@
      */
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -216,6 +226,20 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CAHNGE_STATUS object:@(book.status)];
     [self.tableView reloadData];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == _tapGesture) {
+        return CGRectContainsPoint(self.tableView.frame, [gestureRecognizer locationInView:self.view]);
+    }
+    return YES;
+}
+
+- (void)tap:(UITapGestureRecognizer*)gesture {
+    [self.searchBar resignFirstResponder];
 }
 
 @end

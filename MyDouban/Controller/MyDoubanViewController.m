@@ -8,6 +8,7 @@
 
 #import "MyDoubanViewController.h"
 #import "LoginViewController.h"
+#import "UIBarButtonItem+Extension.h"
 
 @interface MyDoubanViewController ()
 
@@ -45,6 +46,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"登录" style:ExtendBarButtonItemStyleBlue target:self action:@selector(loginTapped:)];
 }
 
 - (void)didReceiveMemoryWarning

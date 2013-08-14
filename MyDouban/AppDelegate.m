@@ -10,13 +10,17 @@
 
 @implementation AppDelegate
 
+- (BOOL)isLogin
+{
+    return self.accessToken != nil;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     self.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_ACCESSTOKEN];
     self.refreshToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_REFRESHTOKEN];
     self.userId = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERID];
-    self.userName = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERNAME];
     
     [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"bg_tabBar.png"]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selection.png"]];
@@ -28,9 +32,23 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, backButtonImage.size.height*2) forBarMetrics:UIBarMetricsDefault];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogout:) name:NOTIFICATION_LOGOUT object:nil];
+    
     return YES;
 }
-							
+
+- (void)hasLogout:(NSNotification *)notification
+{
+    self.accessToken = nil;
+    self.refreshToken = nil;
+    self.userId = nil;
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_ACCESSTOKEN];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_REFRESHTOKEN];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_USERID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

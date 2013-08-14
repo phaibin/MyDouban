@@ -42,14 +42,21 @@
 
 - (void)innerInit
 {
+    [self resetData];
+    
+    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogin:) name:NOTIFICATION_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogout:) name:NOTIFICATION_LOGOUT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusChanged:) name:NOTIFICATION_CAHNGE_STATUS object:nil];
+}
+
+- (void)resetData
+{
     _pageNumArray = [NSMutableArray arrayWithArray:@[@(0), @(0), @(0)]];
     _pageSizeArray = [NSMutableArray arrayWithArray:@[@(10), @(10), @(10)]];
     _hasNextArray = [NSMutableArray arrayWithArray:@[@(NO), @(NO), @(NO)]];
     _bookListArray = [NSMutableArray arrayWithArray:@[[[NSMutableArray alloc] init], [[NSMutableArray alloc] init], [[NSMutableArray alloc] init]]];
-    
-    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusChanged:) name:NOTIFICATION_CAHNGE_STATUS object:nil];
 }
 
 - (void)viewDidLoad
@@ -119,6 +126,19 @@
         [SVProgressHUD dismiss];
         _hasNextArray[_showStatus] = @(NO);
     }];
+}
+
+- (void)hasLogin:(NSNotification *)notification
+{
+    [self reloadWithStatus:DBBookStatusWantRead];
+}
+
+- (void)hasLogout:(NSNotification *)notification
+{
+    [self resetData];
+    for (UITableView *tableView in _tableViews) {
+        [tableView reloadData];
+    }
 }
 
 - (void)reloadWithStatus:(DBBookStatus)status
@@ -233,7 +253,7 @@
     UITableView *tableView = _tableViews[_showStatus];
     tableView.hidden = NO;
     [tableView reloadData];
-    if ([_bookListArray[_showStatus] count] == 0)
+    if (THE_APPDELEGATE.isLogin && [_bookListArray[_showStatus] count] == 0)
         [self getData];
 }
 

@@ -10,6 +10,11 @@
 
 @interface MyDoubanViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *joinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+
 - (IBAction)loginTapped:(id)sender;
 
 @end

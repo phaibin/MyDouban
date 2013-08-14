@@ -9,12 +9,18 @@
 #import "MyDoubanViewController.h"
 #import "LoginViewController.h"
 #import "UIBarButtonItem+Extension.h"
+#import <QuartzCore/QuartzCore.h>
+#import "UserInfo.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyDoubanViewController ()
 
 @end
 
 @implementation MyDoubanViewController
+{
+    UserInfo *_userInfo;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,6 +41,7 @@
 - (void)innerInit
 {
     [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_mydouban_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_mydouban.png"]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogin:) name:NOTIFICATION_LOGIN object:nil];
 }
 
 - (void)viewDidLoad
@@ -46,7 +53,17 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"登录" style:ExtendBarButtonItemStyleBlue target:self action:@selector(loginTapped:)];
+    self.headerImageView.layer.cornerRadius = 3;
+    self.headerImageView.clipsToBounds = YES;
+    self.headerImageView.layer.borderWidth = 1;
+    self.headerImageView.layer.borderColor = [UIColor grayColor].CGColor;
+    
+    if (THE_APPDELEGATE.userId) {
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"退出" style:ExtendBarButtonItemStyleBlue target:self action:@selector(logoutTapped:)];
+        [self getData];
+    } else {
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"登录" style:ExtendBarButtonItemStyleBlue target:self action:@selector(loginTapped:)];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,88 +72,62 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)getData
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    NSString *url = [NSString stringWithFormat:URL_USER_INFO, THE_APPDELEGATE.userId];
+    [SVProgressHUD show];
+    [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
+    [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        _userInfo = [[UserInfo alloc] initWithDict:responseObject];
+        
+        __weak typeof(self) weakSelf = self;
+        [weakSelf.headerImageView setImageWithURL:[NSURL URLWithString:_userInfo.avatarUrl] placeholderImage:[UIImage imageNamed:@"default_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            if (image) {
+                weakSelf.headerImageView.image = image;
+                if (cacheType == SDImageCacheTypeNone) {
+                    weakSelf.headerImageView.alpha = 0;
+                    [UIView animateWithDuration:0.3 animations:^{
+                        weakSelf.headerImageView.alpha = 1;
+                    }];
+                }
+            }
+        }];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)clear
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    
-    return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)hasLogin:(NSNotification *)notification
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"退出" style:ExtendBarButtonItemStyleBlue target:self action:@selector(logoutTapped:)];
+    [self getData];
 }
 
 - (IBAction)loginTapped:(id)sender
 {
     LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController] animated:YES completion:nil];
+}
+
+- (IBAction)logoutTapped:(id)sender
+{
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"登录" style:ExtendBarButtonItemStyleBlue target:self action:@selector(loginTapped:)];
+    [self clear];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGOUT object:nil];
+}
+
+- (void)viewDidUnload {
+    [self setHeaderImageView:nil];
+    [self setNameLabel:nil];
+    [self setJoinLabel:nil];
+    [self setDescLabel:nil];
+    [super viewDidUnload];
 }
 
 @end

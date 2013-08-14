@@ -14,6 +14,6 @@
 @property (nonatomic, copy) NSString *accessToken;
 @property (nonatomic, copy) NSString *refreshToken;
 @property (nonatomic, copy) NSString *userId;
-@property (nonatomic, copy) NSString *userName;
+@property (nonatomic, assign, readonly) BOOL isLogin;
 
 @end

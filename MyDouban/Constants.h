@@ -7,8 +7,8 @@
 //
 
 
-#define APP_KEY         @"0887d5416ed4655b19977fc44c7d3011"
-#define APP_SECRET      @"c76f3580056ded04"
+#define APP_KEY         @"004e785a8cb2933300eb690fa617b999"
+#define APP_SECRET      @"9e4a5e1aa3a136df"
 #define URL_AUTHORIZE   @"https://www.douban.com/service/auth2/auth"
 #define URL_TOKEN       @"https://www.douban.com/service/auth2/token"
 #define URL_REDIRECT    @"http://www.phaibin.tk"

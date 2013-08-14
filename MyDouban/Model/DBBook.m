@@ -62,6 +62,15 @@
         self.authors = dict[@"author"];
         self.coverImageUrl = dict[@"images"][@"medium"];
         self.status = DBBookStatusNone;
+        if (dict[@"current_user_collection"]) {
+            NSString *status = dict[@"current_user_collection"][@"status"];
+            if ([status isEqualToString:@"wish"])
+                self.status = DBBookStatusWantRead;
+            else if ([status isEqualToString:@"reading"])
+                self.status = DBBookStatusReading;
+            else if ([status isEqualToString:@"read"])
+                self.status = DBBookStatusHasRead;
+        }
     }
     return self;
 }

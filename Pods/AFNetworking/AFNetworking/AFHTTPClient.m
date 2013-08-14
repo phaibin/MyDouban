@@ -698,6 +698,8 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
+    NSLog(@"delete: %@", path);
+    NSLog(@"delete body: %@", [parameters JSONString]);
 	NSURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
 	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
@@ -708,6 +710,8 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
+    NSLog(@"patch: %@", path);
+    NSLog(@"patch body: %@", [parameters JSONString]);
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
 	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];

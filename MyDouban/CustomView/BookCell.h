@@ -11,7 +11,7 @@
 
 @protocol BookCellDelegate <NSObject>
 
-- (void)bookStatusChanged:(DBBook *)book;
+- (void)bookStatusChanged:(DBBook *)book fromStatus:(DBBookStatus)status;
 
 @end
 

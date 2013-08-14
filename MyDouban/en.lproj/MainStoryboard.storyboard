@@ -325,6 +325,7 @@
                     <navigationItem key="navigationItem" id="Ev8-7C-PVP"/>
                     <connections>
                         <outlet property="hasReadTableView" destination="3FT-BF-POO" id="Tc2-6B-zNg"/>
+                        <outlet property="modeSegment" destination="EtS-55-QZC" id="7wn-eg-0iI"/>
                         <outlet property="readingTableView" destination="l1N-R7-G9C" id="L3m-dO-l6V"/>
                         <outlet property="wantReadTableView" destination="Kg7-cI-m3i" id="iy7-mp-qMP"/>
                     </connections>
@@ -712,6 +713,7 @@
             <relationships>
                 <relationship kind="action" name="showModeChanged:"/>
                 <relationship kind="outlet" name="hasReadTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="modeSegment" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="readingTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="wantReadTableView" candidateClass="UITableView"/>
             </relationships>

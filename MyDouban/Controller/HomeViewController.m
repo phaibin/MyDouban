@@ -84,7 +84,7 @@
     NSString *url = URL_BOOK_SEARCH;
     NSDictionary *parameters = @{@"q":searchText, @"count":@10};
     [SVProgressHUD show];
-    [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
+    [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         [_bookList removeAllObjects];
@@ -212,10 +212,9 @@
 
 #pragma mark - BookCellDelegate
 
-- (void)bookStatusChanged:(DBBook *)book
+- (void)bookStatusChanged:(DBBook *)book fromStatus:(DBBookStatus)status
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CAHNGE_STATUS object:@(book.status)];
-    [_bookList removeObject:book];
     [self.tableView reloadData];
 }
 

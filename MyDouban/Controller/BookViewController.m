@@ -9,7 +9,6 @@
 #import "BookViewController.h"
 #import "LoginViewController.h"
 #import "DBBook.h"
-#import "BookCell.h"
 
 @interface BookViewController ()
 
@@ -127,6 +126,9 @@
     _showStatus = status;
     _pageNumArray[_showStatus] = @0;
     [self getData];
+    [self switchTableView];
+    self.modeSegment.selectedSegmentIndex = _showStatus;
+    [_tableViews[_showStatus] scrollRectToVisible:CGRectMake(0, 0, 320, 10) animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -145,7 +147,7 @@
 {
     static NSString *CellIdentifier = @"BookCell";
     BookCell *cell = (BookCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    cell.delegate = self;
     // Configure the cell...
     DBBook *book = _bookListArray[_showStatus][indexPath.row];
     [cell setBook:book];
@@ -157,28 +159,27 @@
     return cell;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        DBBook *book = _bookListArray[_showStatus][indexPath.row];
+        [book changeStatus:DBBookStatusNone success:^{
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+        [_bookListArray[_showStatus] removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.
@@ -213,22 +214,40 @@
     [self setWantReadTableView:nil];
     [self setReadingTableView:nil];
     [self setHasReadTableView:nil];
+    [self setModeSegment:nil];
     [super viewDidUnload];
 }
 
 - (IBAction)showModeChanged:(id)sender
 {
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    _showStatus = segmentedControl.selectedSegmentIndex;
+    [self switchTableView];
+}
+
+- (void)switchTableView
+{
     self.wantReadTableView.hidden = YES;
     self.readingTableView.hidden = YES;
     self.hasReadTableView.hidden = YES;
-    
-    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    _showStatus = segmentedControl.selectedSegmentIndex;
     UITableView *tableView = _tableViews[_showStatus];
     tableView.hidden = NO;
     [tableView reloadData];
     if ([_bookListArray[_showStatus] count] == 0)
         [self getData];
+}
+
+#pragma mark - BookCellDelegate
+
+- (void)bookStatusChanged:(DBBook *)book fromStatus:(DBBookStatus)status
+{
+    [_bookListArray[status] removeObject:book];
+    [_tableViews[status] reloadData];
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self reloadWithStatus:book.status];
+    });
 }
 
 @end

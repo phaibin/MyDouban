@@ -74,9 +74,10 @@
 
 - (IBAction)wantReadTapped:(id)sender
 {
-    [self.book changeStatus:DBBookStatusReading success:^{
-        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:)])
-            [self.delegate bookStatusChanged:self.book];
+    DBBookStatus orgStatus = self.book.status;
+    [self.book changeStatus:DBBookStatusWantRead success:^{
+        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
+            [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -84,9 +85,10 @@
 
 - (IBAction)readingTapped:(id)sender
 {
+    DBBookStatus orgStatus = self.book.status;
     [self.book changeStatus:DBBookStatusReading success:^{
-        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:)])
-            [self.delegate bookStatusChanged:self.book];
+        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
+            [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -94,9 +96,10 @@
 
 - (IBAction)hasReadTapped:(id)sender
 {
+    DBBookStatus orgStatus = self.book.status;
     [self.book changeStatus:DBBookStatusHasRead success:^{
-        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:)])
-            [self.delegate bookStatusChanged:self.book];
+        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
+            [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];

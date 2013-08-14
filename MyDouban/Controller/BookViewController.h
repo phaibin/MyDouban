@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookCell.h"
 
-@interface BookViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface BookViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, BookCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *wantReadTableView;
 @property (weak, nonatomic) IBOutlet UITableView *readingTableView;
 @property (weak, nonatomic) IBOutlet UITableView *hasReadTableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *modeSegment;
 
 - (IBAction)showModeChanged:(id)sender;
 

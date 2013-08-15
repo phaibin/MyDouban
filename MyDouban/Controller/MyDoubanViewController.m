@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UserInfo.h"
 #import "UIImageView+WebCache.h"
+#import "NSDate+Convenience.h"
 
 @interface MyDoubanViewController ()
 
@@ -80,7 +81,10 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         _userInfo = [[UserInfo alloc] initWithDict:responseObject];
-        
+        self.nameLabel.text = [NSString stringWithFormat:@"%@ (%@)", _userInfo.nickName, _userInfo.userName];
+        self.joinLabel.text = [NSDate stringFromDate:_userInfo.joinedIn format:@"yyyy-MM-dd加入"];
+        self.descLabel.text = _userInfo.desciption;
+        [self.descLabel sizeToFit];
         __weak typeof(self) weakSelf = self;
         [weakSelf.headerImageView setImageWithURL:[NSURL URLWithString:_userInfo.avatarUrl] placeholderImage:[UIImage imageNamed:@"default_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             if (image) {
@@ -100,7 +104,10 @@
 
 - (void)clear
 {
-    
+    self.nameLabel.text = @"";
+    self.joinLabel.text = @"";
+    self.descLabel.text = @"";
+    self.headerImageView.image = [UIImage imageNamed:@"default_avatar.png"];
 }
 
 - (void)hasLogin:(NSNotification *)notification

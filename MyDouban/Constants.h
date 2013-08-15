@@ -19,7 +19,7 @@
 
 #define THE_APPDELEGATE ((AppDelegate *)([UIApplication sharedApplication].delegate))
 
-#define URL_USER_INFO           @"https://api.douban.com/v2/book/user/%@"
+#define URL_USER_INFO           @"https://api.douban.com/v2/user/%@"
 #define URL_BOOK_COLLECTIONS    @"https://api.douban.com/v2/book/user/%@/collections"
 #define URL_BOOK_COLLECTION     @"https://api.douban.com/v2/book/%@/collection"
 #define URL_BOOK_SEARCH         @"https://api.douban.com/v2/book/search"

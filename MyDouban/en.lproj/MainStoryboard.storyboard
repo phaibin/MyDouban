@@ -36,6 +36,7 @@
                                     <segment title="在读"/>
                                     <segment title="读过"/>
                                 </segments>
+                                <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="showModeChanged:" destination="lxx-fB-Ups" eventType="valueChanged" id="Q09-b8-TGc"/>
                                 </connections>
@@ -45,7 +46,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="Brl-Lx-E33" customClass="BookCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="Brl-Lx-E33" customClass="BookCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -61,16 +62,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" white="0.26283074820000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wUZ-aC-Umo">
                                                     <rect key="frame" x="65" y="34" width="249" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3E-Nw-Zw7">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3E-Nw-Zw7" customClass="FlattenButton">
                                                     <rect key="frame" x="111" y="61" width="55" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -82,10 +83,10 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="wantReadTapped:" destination="Brl-Lx-E33" eventType="touchUpInside" id="WpA-i1-1Si"/>
+                                                        <action selector="changeStatusTapped:" destination="Brl-Lx-E33" eventType="touchUpInside" id="wbh-0x-8pw"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IHx-TC-ghZ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IHx-TC-ghZ" customClass="FlattenButton">
                                                     <rect key="frame" x="179" y="62" width="55" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -97,10 +98,10 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="readingTapped:" destination="Brl-Lx-E33" eventType="touchUpInside" id="MTw-Q5-fSl"/>
+                                                        <action selector="changeStatusTapped:" destination="Brl-Lx-E33" eventType="touchUpInside" id="kf3-Kj-eeD"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QTc-bJ-0CX">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QTc-bJ-0CX" customClass="FlattenButton">
                                                     <rect key="frame" x="245" y="62" width="55" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -112,9 +113,14 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="hasReadTapped:" destination="Brl-Lx-E33" eventType="touchUpInside" id="nr8-dZ-QmD"/>
+                                                        <action selector="changeStatusTapped:" destination="Brl-Lx-E33" eventType="touchUpInside" id="L67-cA-aSE"/>
                                                     </connections>
                                                 </button>
+                                                <view contentMode="scaleToFill" id="bkY-Ri-Nq5" customClass="RatingView">
+                                                    <rect key="frame" x="65" y="66" width="68" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -123,6 +129,7 @@
                                             <outlet property="coverImageView" destination="IVf-Em-ZPM" id="UJV-t7-Img"/>
                                             <outlet property="hasReadButton" destination="QTc-bJ-0CX" id="HJI-Mi-EgR"/>
                                             <outlet property="nameLabel" destination="McB-zQ-oYa" id="4QP-sw-dd4"/>
+                                            <outlet property="ratingView" destination="bkY-Ri-Nq5" id="Lhr-VI-FBD"/>
                                             <outlet property="readingButton" destination="IHx-TC-ghZ" id="vy8-ue-Ttw"/>
                                             <outlet property="wantReadButton" destination="t3E-Nw-Zw7" id="Ty5-mt-5Kz"/>
                                         </connections>
@@ -138,7 +145,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="647-Zc-oFc" customClass="BookCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="647-Zc-oFc" customClass="BookCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -154,16 +161,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" white="0.26283074820000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7GO-R0-F4e">
                                                     <rect key="frame" x="65" y="34" width="249" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0lG-IH-EUz">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0lG-IH-EUz" customClass="FlattenButton">
                                                     <rect key="frame" x="111" y="61" width="55" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -175,10 +182,10 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="wantReadTapped:" destination="647-Zc-oFc" eventType="touchUpInside" id="0LX-YW-ZcG"/>
+                                                        <action selector="changeStatusTapped:" destination="647-Zc-oFc" eventType="touchUpInside" id="8zj-dA-Wgx"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Gk-Jb-8nJ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Gk-Jb-8nJ" customClass="FlattenButton">
                                                     <rect key="frame" x="179" y="62" width="55" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -190,10 +197,10 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="readingTapped:" destination="647-Zc-oFc" eventType="touchUpInside" id="19I-4g-byb"/>
+                                                        <action selector="changeStatusTapped:" destination="647-Zc-oFc" eventType="touchUpInside" id="9Ka-1P-ux1"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aHf-Vt-BAl">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aHf-Vt-BAl" customClass="FlattenButton">
                                                     <rect key="frame" x="245" y="62" width="55" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -205,9 +212,14 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="hasReadTapped:" destination="647-Zc-oFc" eventType="touchUpInside" id="JKR-BM-DtV"/>
+                                                        <action selector="changeStatusTapped:" destination="647-Zc-oFc" eventType="touchUpInside" id="SPB-gQ-MJ2"/>
                                                     </connections>
                                                 </button>
+                                                <view contentMode="scaleToFill" id="a6x-aM-OWT" customClass="RatingView">
+                                                    <rect key="frame" x="65" y="66" width="68" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -216,6 +228,7 @@
                                             <outlet property="coverImageView" destination="o7p-EO-3xn" id="I3O-sH-kXB"/>
                                             <outlet property="hasReadButton" destination="aHf-Vt-BAl" id="T71-7K-Jf1"/>
                                             <outlet property="nameLabel" destination="SNF-G6-WFF" id="dTE-Cd-ast"/>
+                                            <outlet property="ratingView" destination="a6x-aM-OWT" id="tTM-Ra-PKZ"/>
                                             <outlet property="readingButton" destination="9Gk-Jb-8nJ" id="adj-xj-ifI"/>
                                             <outlet property="wantReadButton" destination="0lG-IH-EUz" id="Snc-mq-gYe"/>
                                         </connections>
@@ -231,7 +244,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="ByE-kQ-qDC" customClass="BookCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="ByE-kQ-qDC" customClass="BookCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -247,16 +260,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" white="0.26283074820000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uUZ-TU-x5B">
                                                     <rect key="frame" x="65" y="34" width="249" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qT1-Gf-jPA">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qT1-Gf-jPA" customClass="FlattenButton">
                                                     <rect key="frame" x="111" y="61" width="55" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -268,10 +281,10 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="wantReadTapped:" destination="ByE-kQ-qDC" eventType="touchUpInside" id="Dqg-D0-Nb6"/>
+                                                        <action selector="changeStatusTapped:" destination="ByE-kQ-qDC" eventType="touchUpInside" id="XOj-Vt-MMX"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f3V-24-SCt">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f3V-24-SCt" customClass="FlattenButton">
                                                     <rect key="frame" x="179" y="62" width="55" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -283,10 +296,10 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="readingTapped:" destination="ByE-kQ-qDC" eventType="touchUpInside" id="4nh-9N-VCs"/>
+                                                        <action selector="changeStatusTapped:" destination="ByE-kQ-qDC" eventType="touchUpInside" id="OIx-xT-bRd"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MaN-m5-L90">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MaN-m5-L90" customClass="FlattenButton">
                                                     <rect key="frame" x="245" y="62" width="55" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -298,9 +311,14 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="hasReadTapped:" destination="ByE-kQ-qDC" eventType="touchUpInside" id="1ev-wT-OvY"/>
+                                                        <action selector="changeStatusTapped:" destination="ByE-kQ-qDC" eventType="touchUpInside" id="erl-cC-xXr"/>
                                                     </connections>
                                                 </button>
+                                                <view contentMode="scaleToFill" id="7Ag-HN-sLH" customClass="RatingView">
+                                                    <rect key="frame" x="65" y="66" width="68" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -309,6 +327,7 @@
                                             <outlet property="coverImageView" destination="YdB-FY-wy9" id="51H-rk-85M"/>
                                             <outlet property="hasReadButton" destination="MaN-m5-L90" id="PMt-ub-Svb"/>
                                             <outlet property="nameLabel" destination="hIX-un-QQQ" id="fc1-vM-BzY"/>
+                                            <outlet property="ratingView" destination="7Ag-HN-sLH" id="WCt-we-Iym"/>
                                             <outlet property="readingButton" destination="f3V-24-SCt" id="ibM-dR-zWr"/>
                                             <outlet property="wantReadButton" destination="qT1-Gf-jPA" id="Ng6-5n-SX5"/>
                                         </connections>
@@ -345,11 +364,11 @@
                         <sections>
                             <tableViewSection id="jS6-8Z-ij4">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="345" id="q2s-Ds-vUQ">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="347"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="343" id="q2s-Ds-vUQ">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="345"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="344"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="342"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="default_avatar.png" id="OBI-ZK-CNm">
@@ -364,7 +383,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ulz-HN-qr3">
-                                                    <rect key="frame" x="129" y="49" width="160" height="28"/>
+                                                    <rect key="frame" x="129" y="41" width="160" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -437,12 +456,14 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="开发中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PxI-cn-FKV">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="等待杯具的豆瓣API完成" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PxI-cn-FKV">
                                 <rect key="frame" x="0.0" y="158" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93333339689999995" green="0.9450981021" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
@@ -492,7 +513,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="vO8-sT-L1s" customClass="BookCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="90" id="vO8-sT-L1s" customClass="BookCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -508,19 +529,19 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <color key="textColor" white="0.26283074820000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hYd-z1-Mv9">
                                             <rect key="frame" x="65" y="34" width="249" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rPd-vF-YrR">
-                                            <rect key="frame" x="111" y="61" width="55" height="29"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rPd-vF-YrR" customClass="FlattenButton">
+                                            <rect key="frame" x="124" y="59" width="50" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <state key="normal" title="想读">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -529,13 +550,13 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="wantReadTapped:" destination="vO8-sT-L1s" eventType="touchUpInside" id="VZe-GT-Ec9"/>
+                                                <action selector="changeStatusTapped:" destination="vO8-sT-L1s" eventType="touchUpInside" id="njo-bf-j72"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YtN-Ha-ir1">
-                                            <rect key="frame" x="179" y="62" width="55" height="28"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YtN-Ha-ir1" customClass="FlattenButton">
+                                            <rect key="frame" x="192" y="60" width="50" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <state key="normal" title="在读">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -544,13 +565,13 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="readingTapped:" destination="vO8-sT-L1s" eventType="touchUpInside" id="6VT-ML-LBV"/>
+                                                <action selector="changeStatusTapped:" destination="vO8-sT-L1s" eventType="touchUpInside" id="4dG-Pi-3kn"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fAF-Kb-thr">
-                                            <rect key="frame" x="245" y="62" width="55" height="28"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fAF-Kb-thr" customClass="FlattenButton">
+                                            <rect key="frame" x="258" y="60" width="50" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <state key="normal" title="读过">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -559,9 +580,14 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="hasReadTapped:" destination="vO8-sT-L1s" eventType="touchUpInside" id="pD3-IF-TMb"/>
+                                                <action selector="changeStatusTapped:" destination="vO8-sT-L1s" eventType="touchUpInside" id="oeD-Uz-zXZ"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" id="WH9-4M-vNE" customClass="RatingView">
+                                            <rect key="frame" x="65" y="66" width="68" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -570,6 +596,7 @@
                                     <outlet property="coverImageView" destination="bCo-pF-2Hf" id="Unf-xL-KPu"/>
                                     <outlet property="hasReadButton" destination="fAF-Kb-thr" id="aZ0-QU-BbF"/>
                                     <outlet property="nameLabel" destination="HZs-CO-9nh" id="ieo-dh-6OZ"/>
+                                    <outlet property="ratingView" destination="WH9-4M-vNE" id="9RK-7h-TQu"/>
                                     <outlet property="readingButton" destination="YtN-Ha-ir1" id="J1Y-YU-RRb"/>
                                     <outlet property="wantReadButton" destination="rPd-vF-YrR" id="FuU-WF-xVS"/>
                                 </connections>
@@ -641,7 +668,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hg-q6-RVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="-751"/>
+            <point key="canvasLocation" x="613" y="-745"/>
         </scene>
         <!--Navigation Controller - 搜索-->
         <scene sceneID="K5d-Hv-7gT">
@@ -670,6 +697,64 @@
         <image name="icon_mydouban.png" width="24" height="21"/>
         <image name="icon_setting.png" width="80" height="49"/>
     </resources>
+    <classes>
+        <class className="BookCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookCell.h"/>
+            <relationships>
+                <relationship kind="action" name="changeStatusTapped:"/>
+                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hasReadButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ratingView" candidateClass="RatingView"/>
+                <relationship kind="outlet" name="readingButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="wantReadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="BookViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showModeChanged:"/>
+                <relationship kind="outlet" name="hasReadTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="modeSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="readingTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="wantReadTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="FlattenButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlattenButton.h"/>
+        </class>
+        <class className="HomeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="MovieCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MovieViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieViewController.h"/>
+        </class>
+        <class className="MyDoubanViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyDoubanViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginTapped:"/>
+                <relationship kind="outlet" name="descLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="headerImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="joinLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RatingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RatingView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

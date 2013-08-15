@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "LoginViewController.h"
 
 @interface HomeViewController ()
 
@@ -37,6 +38,8 @@
 
 - (void)innerInit
 {
+    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_search_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_search.png"]];
+    
     _bookList = [[NSMutableArray alloc] init];
     _movieList = [[NSMutableArray alloc] init];
     
@@ -89,7 +92,10 @@
     NSString *url = URL_BOOK_SEARCH;
     NSDictionary *parameters = @{@"q":searchText, @"count":@10};
     [SVProgressHUD show];
-    [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
+    if (THE_APPDELEGATE.isLogin)
+        [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
+    else
+        [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         [_bookList removeAllObjects];
@@ -115,13 +121,20 @@
     return 2;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)];
+    view.backgroundColor = [UIColor darkGrayColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 23)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:13];
     if (section == 0)
-        return @"图书";
+        label.text = @"图书";
     else if (section == 1)
-        return @"电影";
-    return @"";
+        label.text = @"电影";
+    [view addSubview:label];
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -226,6 +239,14 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CAHNGE_STATUS object:@(book.status)];
     [self.tableView reloadData];
+}
+
+- (void)bookStatusChangeFailed:(DBBook *)book withError:(NSError *)error
+{
+    if (!THE_APPDELEGATE.isLogin) {
+        LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController] animated:YES completion:nil];
+    }
 }
 
 #pragma mark - UIGestureRecognizerDelegate

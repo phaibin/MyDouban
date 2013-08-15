@@ -23,6 +23,7 @@ typedef enum {
 @property (nonatomic, copy) NSString *coverImageUrl;
 @property (nonatomic, assign) DBBookStatus status;
 @property (nonatomic, copy) NSString *statusString;
+@property (nonatomic, assign) float rating;
 
 - (id)initWithDict:(NSDictionary *)dict;
 - (id)initWithSearchDict:(NSDictionary *)dict;

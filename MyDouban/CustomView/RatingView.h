@@ -10,4 +10,6 @@
 
 @interface RatingView : UIView
 
+@property (nonatomic, assign) float rating;
+
 @end

@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DBBook.h"
+#import "RatingView.h"
 
 @protocol BookCellDelegate <NSObject>
 
+@optional
+
 - (void)bookStatusChanged:(DBBook *)book fromStatus:(DBBookStatus)status;
+- (void)bookStatusChangeFailed:(DBBook *)book withError:(NSError *)error;
 
 @end
 
@@ -23,11 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *wantReadButton;
 @property (weak, nonatomic) IBOutlet UIButton *readingButton;
 @property (weak, nonatomic) IBOutlet UIButton *hasReadButton;
+@property (weak, nonatomic) IBOutlet RatingView *ratingView;
 @property (nonatomic, weak) DBBook *book;
 @property (nonatomic, weak) id<BookCellDelegate> delegate;
 
-- (IBAction)wantReadTapped:(id)sender;
-- (IBAction)readingTapped:(id)sender;
-- (IBAction)hasReadTapped:(id)sender;
+- (IBAction)changeStatusTapped:(id)sender;
 
 @end

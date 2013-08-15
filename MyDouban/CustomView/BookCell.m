@@ -39,7 +39,7 @@
     else if (book.status == DBBookStatusHasRead)
         self.hasReadButton.hidden = YES;
     
-    self.hasReadButton.frame = CGRectMake(245, 62, 55, 28);
+    self.hasReadButton.frame = CGRectMake(260, 60, 50, 28);
     if (self.hasReadButton.hidden) {
         self.readingButton.frame = self.hasReadButton.frame;
     } else {
@@ -54,6 +54,8 @@
         frame.origin.x = frame.origin.x - frame.size.width - 10;
         self.wantReadButton.frame = frame;
     }
+    
+    self.ratingView.rating = book.rating;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -61,8 +63,24 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        [self innerInit];
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self innerInit];
+}
+
+- (void)innerInit
+{
+    self.selectedBackgroundView = [[UIView alloc] init];
+    self.selectedBackgroundView.backgroundColor = RGBCOLOR(221, 233, 217);
+    self.wantReadButton.tag = 0;
+    self.readingButton.tag = 1;
+    self.hasReadButton.tag = 2;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -72,37 +90,38 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)wantReadTapped:(id)sender
+- (IBAction)changeStatusTapped:(id)sender
 {
-    DBBookStatus orgStatus = self.book.status;
-    [self.book changeStatus:DBBookStatusWantRead success:^{
-        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
-            [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-}
-
-- (IBAction)readingTapped:(id)sender
-{
-    DBBookStatus orgStatus = self.book.status;
-    [self.book changeStatus:DBBookStatusReading success:^{
-        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
-            [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-}
-
-- (IBAction)hasReadTapped:(id)sender
-{
-    DBBookStatus orgStatus = self.book.status;
-    [self.book changeStatus:DBBookStatusHasRead success:^{
-        if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
-            [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
+    UIButton *button = (UIButton *)sender;
+    DBBookStatus status = DBBookStatusNone;
+    switch (button.tag) {
+        case 0:
+            status = DBBookStatusWantRead;
+            break;
+        case 1:
+            status = DBBookStatusReading;
+            break;
+        case 2:
+            status = DBBookStatusHasRead;
+            break;
+        default:
+            break;
+    }
+    if (THE_APPDELEGATE.isLogin) {
+        DBBookStatus orgStatus = self.book.status;
+        [self.book changeStatus:status success:^{
+            if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
+                [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([self.delegate respondsToSelector:@selector(bookStatusChangeFailed:withError:)]) {
+                [self.delegate bookStatusChangeFailed:self.book withError:error];
+            }
+        }];
+    } else {
+        if ([self.delegate respondsToSelector:@selector(bookStatusChangeFailed:withError:)]) {
+            [self.delegate bookStatusChangeFailed:self.book withError:nil];
+        }
+    }
 }
 
 @end

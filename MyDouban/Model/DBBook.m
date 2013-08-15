@@ -50,6 +50,7 @@
             self.status = DBBookStatusReading;
         else if ([status isEqualToString:@"read"])
             self.status = DBBookStatusHasRead;
+        self.rating = [dict[@"book"][@"rating"][@"average"] floatValue];
     }
     return self;
 }
@@ -71,6 +72,7 @@
             else if ([status isEqualToString:@"read"])
                 self.status = DBBookStatusHasRead;
         }
+        self.rating = [dict[@"rating"][@"average"] floatValue];
     }
     return self;
 }

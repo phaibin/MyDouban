@@ -9,8 +9,13 @@
 #import "BookViewController.h"
 #import "LoginViewController.h"
 #import "DBBook.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface BookViewController ()
+
+@property (nonatomic, weak) UIRefreshControl *wantReadRefreshControl;
+@property (nonatomic, weak) UIRefreshControl *readingRefreshControl;
+@property (nonatomic, weak) UIRefreshControl *hasReadRefreshControl;
 
 @end
 
@@ -21,6 +26,7 @@
     NSMutableArray *_hasNextArray;
     NSMutableArray *_bookListArray;
     NSArray *_tableViews;
+    NSArray *_refreshControls;
 
     DBBookStatus _showStatus;
 }
@@ -68,9 +74,19 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.coverView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.coverView.layer.shadowOpacity = 0.8;
+    self.coverView.layer.shadowRadius = 6;
+    
     _tableViews = @[self.wantReadTableView, self.readingTableView, self.hasReadTableView];
+    
+    self.wantReadRefreshControl = [self refreshControlForTableView:self.wantReadTableView];
+    self.readingRefreshControl = [self refreshControlForTableView:self.readingTableView];
+    self.hasReadRefreshControl = [self refreshControlForTableView:self.hasReadTableView];
+    _refreshControls = @[self.wantReadRefreshControl, self.readingRefreshControl, self.hasReadRefreshControl];
+    
     if (THE_APPDELEGATE.accessToken && THE_APPDELEGATE.accessToken.length > 0) {
-        [self getData];
+        [self getDataWithIndex:_showStatus];
     } else {
         LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController] animated:YES completion:nil];
@@ -88,14 +104,14 @@
     [self reloadWithStatus:[notification.object intValue]];
 }
 
-- (void)getData
+- (void)getDataWithIndex:(int)index
 {
     NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTIONS, THE_APPDELEGATE.userId];
-    int pageNum = [_pageNumArray[_showStatus] intValue];
-    int pageSize = [_pageSizeArray[_showStatus] intValue];
-    NSMutableArray *bookList = _bookListArray[_showStatus];
+    int pageNum = [_pageNumArray[index] intValue];
+    int pageSize = [_pageSizeArray[index] intValue];
+    NSMutableArray *bookList = _bookListArray[index];
     NSString *status = @"";
-    switch (_showStatus) {
+    switch (index) {
         case DBBookStatusWantRead:
             status = @"wish";
             break;
@@ -109,7 +125,8 @@
             break;
     }
     NSDictionary *parameters = @{@"start":@(pageNum*pageSize), @"count":@(pageSize), @"status":status};
-    [SVProgressHUD show];
+    if (pageNum == 0)
+        [SVProgressHUD show];
     [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
@@ -120,11 +137,12 @@
             DBBook *book = [[DBBook alloc] initWithDict:dict];
             [bookList addObject:book];
         }
-        _hasNextArray[_showStatus] = @(bookList.count < [responseObject[@"total"] intValue]);
-        [_tableViews[_showStatus] reloadData];
+        _hasNextArray[index] = @(bookList.count < [responseObject[@"total"] intValue]);
+        [_tableViews[index] reloadData];
+        [_refreshControls[index] endRefreshing];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-        _hasNextArray[_showStatus] = @(NO);
+        _hasNextArray[index] = @(NO);
     }];
 }
 
@@ -145,10 +163,26 @@
 {
     _showStatus = status;
     _pageNumArray[_showStatus] = @0;
-    [self getData];
+    [self getDataWithIndex:_showStatus];
     [self switchTableView];
     self.modeSegment.selectedSegmentIndex = _showStatus;
     [_tableViews[_showStatus] scrollRectToVisible:CGRectMake(0, 0, 320, 10) animated:YES];
+}
+
+- (UIRefreshControl *)refreshControlForTableView:(UITableView *)tableView
+{
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor darkGrayColor];
+    refreshControl.tag = [_tableViews indexOfObject:tableView];
+    [refreshControl addTarget:self action:@selector(refreshInvoked:) forControlEvents:UIControlEventValueChanged];
+    
+    // Create a UITableViewController so we can use a UIRefreshControl.
+    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:tableView.style];
+    tvc.tableView = tableView;
+    tvc.refreshControl = refreshControl;
+    [self addChildViewController:tvc];
+    
+    return refreshControl;
 }
 
 #pragma mark - Table view data source
@@ -160,7 +194,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_bookListArray[_showStatus] count];
+    int index = [_tableViews indexOfObject:tableView];
+    return [_bookListArray[index] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,12 +204,13 @@
     BookCell *cell = (BookCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
     // Configure the cell...
-    DBBook *book = _bookListArray[_showStatus][indexPath.row];
+    int index = [_tableViews indexOfObject:tableView];
+    DBBook *book = _bookListArray[index][indexPath.row];
     [cell setBook:book];
     
-    if (indexPath.row == [_bookListArray[_showStatus] count]-5 && [_hasNextArray[_showStatus] boolValue]) {
-        _pageNumArray[_showStatus] = @([_pageNumArray[_showStatus] intValue] + 1);
-        [self getData];
+    if (indexPath.row == [_bookListArray[index] count]-5 && [_hasNextArray[index] boolValue]) {
+        _pageNumArray[index] = @([_pageNumArray[index] intValue] + 1);
+        [self getDataWithIndex:index];
     }
     return cell;
 }
@@ -190,13 +226,14 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        DBBook *book = _bookListArray[_showStatus][indexPath.row];
+        int index = [_tableViews indexOfObject:tableView];
+        DBBook *book = _bookListArray[index][indexPath.row];
         [book changeStatus:DBBookStatusNone success:^{
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];
-        [_bookListArray[_showStatus] removeObjectAtIndex:indexPath.row];
+        [_bookListArray[index] removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
@@ -235,6 +272,7 @@
     [self setReadingTableView:nil];
     [self setHasReadTableView:nil];
     [self setModeSegment:nil];
+    [self setCoverView:nil];
     [super viewDidUnload];
 }
 
@@ -254,7 +292,7 @@
     tableView.hidden = NO;
     [tableView reloadData];
     if (THE_APPDELEGATE.isLogin && [_bookListArray[_showStatus] count] == 0)
-        [self getData];
+        [self getDataWithIndex:_showStatus];
 }
 
 #pragma mark - BookCellDelegate
@@ -268,6 +306,11 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self reloadWithStatus:book.status];
     });
+}
+
+- (void)refreshInvoked:(UIRefreshControl *)refreshControl
+{
+    [self reloadWithStatus:refreshControl.tag];
 }
 
 @end

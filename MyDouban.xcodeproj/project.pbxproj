@@ -16,9 +16,6 @@
 		35779C3F17A8C08F00319BF5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35779C3D17A8C08F00319BF5 /* InfoPlist.strings */; };
 		35779C4117A8C08F00319BF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C4017A8C08F00319BF5 /* main.m */; };
 		35779C4517A8C08F00319BF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35779C4417A8C08F00319BF5 /* AppDelegate.m */; };
-		35779C4717A8C08F00319BF5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4617A8C08F00319BF5 /* Default.png */; };
-		35779C4917A8C08F00319BF5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4817A8C08F00319BF5 /* Default@2x.png */; };
-		35779C4B17A8C08F00319BF5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */; };
 		35779C4E17A8C08F00319BF5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35779C4C17A8C08F00319BF5 /* MainStoryboard.storyboard */; };
 		3578532617A8E1E000014AE0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532517A8E1E000014AE0 /* SystemConfiguration.framework */; };
 		3578532817A8E1EC00014AE0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */; };
@@ -30,7 +27,7 @@
 		357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */; };
 		35B3080117B0FD1F00008360 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3080017B0FD1F00008360 /* MovieCell.m */; };
 		35BD6B6A17BDB3010088AE0E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6917BDB3010088AE0E /* Default@2x.png */; };
-		35BD6B6D17BDB5520088AE0E /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6B17BDB5520088AE0E /* Default-568h.png */; };
+		35BD6B6D17BDB5520088AE0E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6B17BDB5520088AE0E /* Default-568h@2x.png */; };
 		35BD6B6E17BDB5520088AE0E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6C17BDB5520088AE0E /* Default.png */; };
 		35C8357117BB626A00ADB3E7 /* icon_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 35C8356F17BB626A00ADB3E7 /* icon_cancel.png */; };
 		35C8357217BB626A00ADB3E7 /* icon_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35C8357017BB626A00ADB3E7 /* icon_cancel@2x.png */; };
@@ -103,9 +100,6 @@
 		35779C4217A8C08F00319BF5 /* MyDouban-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyDouban-Prefix.pch"; sourceTree = "<group>"; };
 		35779C4317A8C08F00319BF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35779C4417A8C08F00319BF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		35779C4617A8C08F00319BF5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		35779C4817A8C08F00319BF5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		35779C4D17A8C08F00319BF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		35779C6517A8D97D00319BF5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3578532517A8E1E000014AE0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -124,7 +118,7 @@
 		35B307FF17B0FD1F00008360 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		35B3080017B0FD1F00008360 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 		35BD6B6917BDB3010088AE0E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		35BD6B6B17BDB5520088AE0E /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
+		35BD6B6B17BDB5520088AE0E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		35BD6B6C17BDB5520088AE0E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		35C8356F17BB626A00ADB3E7 /* icon_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cancel.png; sourceTree = "<group>"; };
 		35C8357017BB626A00ADB3E7 /* icon_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cancel@2x.png"; sourceTree = "<group>"; };
@@ -209,7 +203,7 @@
 				35C8358317BB752A00ADB3E7 /* icon.png */,
 				35BD6B6C17BDB5520088AE0E /* Default.png */,
 				35BD6B6917BDB3010088AE0E /* Default@2x.png */,
-				35BD6B6B17BDB5520088AE0E /* Default-568h.png */,
+				35BD6B6B17BDB5520088AE0E /* Default-568h@2x.png */,
 				35779C3A17A8C08F00319BF5 /* MyDouban */,
 				35779C3317A8C08F00319BF5 /* Frameworks */,
 				35779C3217A8C08F00319BF5 /* Products */,
@@ -264,9 +258,6 @@
 				35779C3D17A8C08F00319BF5 /* InfoPlist.strings */,
 				35779C4017A8C08F00319BF5 /* main.m */,
 				35779C4217A8C08F00319BF5 /* MyDouban-Prefix.pch */,
-				35779C4617A8C08F00319BF5 /* Default.png */,
-				35779C4817A8C08F00319BF5 /* Default@2x.png */,
-				35779C4A17A8C08F00319BF5 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -431,9 +422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35779C3F17A8C08F00319BF5 /* InfoPlist.strings in Resources */,
-				35779C4717A8C08F00319BF5 /* Default.png in Resources */,
-				35779C4917A8C08F00319BF5 /* Default@2x.png in Resources */,
-				35779C4B17A8C08F00319BF5 /* Default-568h@2x.png in Resources */,
 				35779C4E17A8C08F00319BF5 /* MainStoryboard.storyboard in Resources */,
 				357BB1B517AA625D002DC295 /* LoginViewController.xib in Resources */,
 				35E6FB1D17AF56C700BD9B07 /* bg_tabBar.png in Resources */,
@@ -481,7 +469,7 @@
 				35CF5CEF17BCB83B00C9D324 /* icon-star-empty.png in Resources */,
 				35CF5CF017BCB83B00C9D324 /* icon-star-empty@2x.png in Resources */,
 				35BD6B6A17BDB3010088AE0E /* Default@2x.png in Resources */,
-				35BD6B6D17BDB5520088AE0E /* Default-568h.png in Resources */,
+				35BD6B6D17BDB5520088AE0E /* Default-568h@2x.png in Resources */,
 				35BD6B6E17BDB5520088AE0E /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,7 +619,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
 				INFOPLIST_FILE = "MyDouban/MyDouban-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -644,7 +632,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
 				INFOPLIST_FILE = "MyDouban/MyDouban-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

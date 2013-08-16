@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *readingTableView;
 @property (weak, nonatomic) IBOutlet UITableView *hasReadTableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSegment;
+@property (weak, nonatomic) IBOutlet UIView *coverView;
 
 - (IBAction)showModeChanged:(id)sender;
 

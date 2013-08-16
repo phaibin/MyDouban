@@ -21,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MyDouban/Controller/BookViewController.m"
-         timestampString = "398167649.244071"
+         timestampString = "398316674.566198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
-         landmarkName = "-getData"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
+         landmarkName = "-getDataWithIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,12 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MyDouban/Controller/BookViewController.m"
-         timestampString = "398167649.244071"
+         timestampString = "398316674.566198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "119"
-         endingLineNumber = "119"
-         landmarkName = "-getData"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
+         landmarkName = "-getDataWithIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MyDouban/Controller/BookViewController.m"
-         timestampString = "398167649.244071"
+         timestampString = "398317385.905065"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "264"
-         endingLineNumber = "264"
+         startingLineNumber = "302"
+         endingLineNumber = "302"
          landmarkName = "-bookStatusChanged:fromStatus:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,19 +121,6 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MyDouban/CustomView/RatingView.m"
-         timestampString = "398245989.106128"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
-         landmarkName = "-setRating:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -170,6 +157,19 @@
          startingLineNumber = "58"
          endingLineNumber = "58"
          landmarkName = "-setBook:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MyDouban/Controller/BookViewController.m"
+         timestampString = "398316674.566198"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
+         landmarkName = "-reloadWithStatus:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

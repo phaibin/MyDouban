@@ -29,6 +29,9 @@
 		357BB1BA17AA6282002DC295 /* DBBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B917AA6282002DC295 /* DBBook.m */; };
 		357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */; };
 		35B3080117B0FD1F00008360 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3080017B0FD1F00008360 /* MovieCell.m */; };
+		35BD6B6A17BDB3010088AE0E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6917BDB3010088AE0E /* Default@2x.png */; };
+		35BD6B6D17BDB5520088AE0E /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6B17BDB5520088AE0E /* Default-568h.png */; };
+		35BD6B6E17BDB5520088AE0E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35BD6B6C17BDB5520088AE0E /* Default.png */; };
 		35C8357117BB626A00ADB3E7 /* icon_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 35C8356F17BB626A00ADB3E7 /* icon_cancel.png */; };
 		35C8357217BB626A00ADB3E7 /* icon_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35C8357017BB626A00ADB3E7 /* icon_cancel@2x.png */; };
 		35C8357717BB667800ADB3E7 /* icon_button_done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35C8357317BB667800ADB3E7 /* icon_button_done@2x.png */; };
@@ -120,6 +123,9 @@
 		357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoubanViewController.m; sourceTree = "<group>"; };
 		35B307FF17B0FD1F00008360 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		35B3080017B0FD1F00008360 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		35BD6B6917BDB3010088AE0E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		35BD6B6B17BDB5520088AE0E /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
+		35BD6B6C17BDB5520088AE0E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		35C8356F17BB626A00ADB3E7 /* icon_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cancel.png; sourceTree = "<group>"; };
 		35C8357017BB626A00ADB3E7 /* icon_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cancel@2x.png"; sourceTree = "<group>"; };
 		35C8357317BB667800ADB3E7 /* icon_button_done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_button_done@2x.png"; sourceTree = "<group>"; };
@@ -201,6 +207,9 @@
 			children = (
 				35E7A87017BB755E00D6CA2D /* icon@2x.png */,
 				35C8358317BB752A00ADB3E7 /* icon.png */,
+				35BD6B6C17BDB5520088AE0E /* Default.png */,
+				35BD6B6917BDB3010088AE0E /* Default@2x.png */,
+				35BD6B6B17BDB5520088AE0E /* Default-568h.png */,
 				35779C3A17A8C08F00319BF5 /* MyDouban */,
 				35779C3317A8C08F00319BF5 /* Frameworks */,
 				35779C3217A8C08F00319BF5 /* Products */,
@@ -471,6 +480,9 @@
 				35CF5CE117BCB23600C9D324 /* icon-star-half@2x.png in Resources */,
 				35CF5CEF17BCB83B00C9D324 /* icon-star-empty.png in Resources */,
 				35CF5CF017BCB83B00C9D324 /* icon-star-empty@2x.png in Resources */,
+				35BD6B6A17BDB3010088AE0E /* Default@2x.png in Resources */,
+				35BD6B6D17BDB5520088AE0E /* Default-568h.png in Resources */,
+				35BD6B6E17BDB5520088AE0E /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

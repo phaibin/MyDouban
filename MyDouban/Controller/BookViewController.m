@@ -13,189 +13,147 @@
 
 @interface BookViewController ()
 
-@property (nonatomic, weak) UIRefreshControl *wantReadRefreshControl;
-@property (nonatomic, weak) UIRefreshControl *readingRefreshControl;
-@property (nonatomic, weak) UIRefreshControl *hasReadRefreshControl;
+@property (nonatomic, weak) UIRefreshControl *refreshControl;
 
 @end
 
 @implementation BookViewController
 {
-    NSMutableArray *_pageNumArray;
-    NSMutableArray *_pageSizeArray;
-    NSMutableArray *_hasNextArray;
-    NSMutableArray *_bookListArray;
-    NSArray *_tableViews;
-    NSArray *_refreshControls;
-
+    NSMutableDictionary *_bookListDict;
     DBBookStatus _showStatus;
+    NSInteger _pageNum;
+    NSInteger _pageSize;
+    BOOL _hasNext;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)resetData
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self innerInit];
-    }
-    return self;
+    _pageNum = 0;
+    _pageSize = 10;
+    _hasNext = NO;
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self innerInit];
-}
-
-- (void)innerInit
-{
-    [self resetData];
     
-    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
+    _bookListDict = [NSMutableDictionary new];
+    [self resetData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogin:) name:NOTIFICATION_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogout:) name:NOTIFICATION_LOGOUT object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusChanged:) name:NOTIFICATION_CAHNGE_STATUS object:nil];
-}
-
-- (void)resetData
-{
-    _pageNumArray = [NSMutableArray arrayWithArray:@[@(0), @(0), @(0)]];
-    _pageSizeArray = [NSMutableArray arrayWithArray:@[@(10), @(10), @(10)]];
-    _hasNextArray = [NSMutableArray arrayWithArray:@[@(NO), @(NO), @(NO)]];
-    _bookListArray = [NSMutableArray arrayWithArray:@[[[NSMutableArray alloc] init], [[NSMutableArray alloc] init], [[NSMutableArray alloc] init]]];
+    
+    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_book_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_book.png"]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"读书";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.coverView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.coverView.layer.shadowOpacity = 0.8;
-    self.coverView.layer.shadowRadius = 6;
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _tableViews = @[self.wantReadTableView, self.readingTableView, self.hasReadTableView];
+    self.refreshControl = [self refreshControlForTableView:self.tableView];
     
-    self.wantReadRefreshControl = [self refreshControlForTableView:self.wantReadTableView];
-    self.readingRefreshControl = [self refreshControlForTableView:self.readingTableView];
-    self.hasReadRefreshControl = [self refreshControlForTableView:self.hasReadTableView];
-    _refreshControls = @[self.wantReadRefreshControl, self.readingRefreshControl, self.hasReadRefreshControl];
+    if (THE_APPDELEGATE.isLogin) {
+        NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+        _bookListDict[key] = [NSMutableArray new];
+        [self getData];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    if (THE_APPDELEGATE.accessToken && THE_APPDELEGATE.accessToken.length > 0) {
-        [self getDataWithIndex:_showStatus];
-    } else {
+    if (!THE_APPDELEGATE.isLogin) {
         LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController] animated:YES completion:nil];
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)statusChanged:(NSNotification *)notification
 {
-    [self reloadWithStatus:[notification.object intValue]];
+    [self reload];
 }
 
-- (void)getDataWithIndex:(int)index
+- (void)getData
 {
-    NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTIONS, THE_APPDELEGATE.userId];
-    int pageNum = [_pageNumArray[index] intValue];
-    int pageSize = [_pageSizeArray[index] intValue];
-    NSMutableArray *bookList = _bookListArray[index];
-    NSString *status = @"";
-    switch (index) {
-        case DBBookStatusWantRead:
-            status = @"wish";
-            break;
-        case DBBookStatusReading:
-            status = @"reading";
-            break;
-        case DBBookStatusHasRead:
-            status = @"read";
-            break;
-        default:
-            break;
+    if (THE_APPDELEGATE.isLogin) {
+        NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+        NSMutableArray *bookList = _bookListDict[key];
+        
+        NSString *url = [NSString stringWithFormat:URL_BOOK_COLLECTIONS, THE_APPDELEGATE.userId];
+        NSString *status = @"";
+        switch (_showStatus) {
+            case DBBookStatusWantRead:
+                status = @"wish";
+                break;
+            case DBBookStatusReading:
+                status = @"reading";
+                break;
+            case DBBookStatusHasRead:
+                status = @"read";
+                break;
+            default:
+                break;
+        }
+        NSDictionary *parameters = @{@"start":@(_pageNum*_pageSize), @"count":@(_pageSize), @"status":status};
+        if (_pageNum == 0)
+            [self showLoading];
+        [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
+        [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self dismissLoading];
+            if (_pageNum == 0) {
+                [bookList removeAllObjects];
+            }
+            for (NSDictionary *dict in responseObject[@"collections"]) {
+                DBBook *book = [[DBBook alloc] initWithDict:dict];
+                [bookList addObject:book];
+            }
+            _hasNext = (bookList.count < [responseObject[@"total"] intValue]);
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self showErrorWithStatus:@"网络错误！"];
+            _hasNext = NO;
+        }];
+    } else {
+        [self.refreshControl endRefreshing];
     }
-    NSDictionary *parameters = @{@"start":@(pageNum*pageSize), @"count":@(pageSize), @"status":status};
-    if (pageNum == 0)
-        [SVProgressHUD show];
-    [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
-    [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
-        if (pageNum == 0) {
-            [bookList removeAllObjects];
-        }
-        for (NSDictionary *dict in responseObject[@"collections"]) {
-            DBBook *book = [[DBBook alloc] initWithDict:dict];
-            [bookList addObject:book];
-        }
-        _hasNextArray[index] = @(bookList.count < [responseObject[@"total"] intValue]);
-        [_tableViews[index] reloadData];
-        [_refreshControls[index] endRefreshing];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
-        _hasNextArray[index] = @(NO);
-    }];
 }
 
 - (void)hasLogin:(NSNotification *)notification
 {
-    [self reloadWithStatus:DBBookStatusWantRead];
+    [self reload];
 }
 
 - (void)hasLogout:(NSNotification *)notification
 {
+    _bookListDict = [NSMutableDictionary new];
     [self resetData];
-    for (UITableView *tableView in _tableViews) {
-        [tableView reloadData];
-    }
+    [self.tableView reloadData];
 }
 
-- (void)reloadWithStatus:(DBBookStatus)status
+- (void)reload
 {
-    _showStatus = status;
-    _pageNumArray[_showStatus] = @0;
-    [self getDataWithIndex:_showStatus];
-    [self switchTableView];
-    self.modeSegment.selectedSegmentIndex = _showStatus;
-    [_tableViews[_showStatus] scrollRectToVisible:CGRectMake(0, 0, 320, 10) animated:YES];
-}
-
-- (UIRefreshControl *)refreshControlForTableView:(UITableView *)tableView
-{
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [UIColor darkGrayColor];
-    refreshControl.tag = [_tableViews indexOfObject:tableView];
-    [refreshControl addTarget:self action:@selector(refreshInvoked:) forControlEvents:UIControlEventValueChanged];
-    
-    // Create a UITableViewController so we can use a UIRefreshControl.
-    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:tableView.style];
-    tvc.tableView = tableView;
-    tvc.refreshControl = refreshControl;
-    [self addChildViewController:tvc];
-    
-    return refreshControl;
+    _pageNum = 0;
+    [self getData];
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 320, 10) animated:YES];
 }
 
 #pragma mark - Table view data source
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 90;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int index = [_tableViews indexOfObject:tableView];
-    return [_bookListArray[index] count];
+    NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+    return [_bookListDict[key] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,13 +162,18 @@
     BookCell *cell = (BookCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
     // Configure the cell...
-    int index = [_tableViews indexOfObject:tableView];
-    DBBook *book = _bookListArray[index][indexPath.row];
-    [cell setBook:book];
+    NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+    NSMutableArray *bookList = _bookListDict[key];
     
-    if (indexPath.row == [_bookListArray[index] count]-5 && [_hasNextArray[index] boolValue]) {
-        _pageNumArray[index] = @([_pageNumArray[index] intValue] + 1);
-        [self getDataWithIndex:index];
+    DBBook *book = bookList[indexPath.row];
+    [cell setBook:book];
+    cell.wantReadButton.tag = indexPath.row;
+    cell.hasReadButton.tag = indexPath.row;
+    cell.readingButton.tag = indexPath.row;
+    
+    if (indexPath.row == bookList.count-5 && _hasNext) {
+        _pageNum += 1;
+        [self getData];
     }
     return cell;
 }
@@ -226,33 +189,17 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        int index = [_tableViews indexOfObject:tableView];
-        DBBook *book = _bookListArray[index][indexPath.row];
+        NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+        DBBook *book = _bookListDict[key][indexPath.row];
         [book changeStatus:DBBookStatusNone success:^{
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];
-        [_bookListArray[index] removeObjectAtIndex:indexPath.row];
+        [_bookListDict[key] removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -268,49 +215,84 @@
 }
 
 - (void)viewDidUnload {
-    [self setWantReadTableView:nil];
-    [self setReadingTableView:nil];
-    [self setHasReadTableView:nil];
+    [self setTableView:nil];
     [self setModeSegment:nil];
-    [self setCoverView:nil];
     [super viewDidUnload];
 }
 
 - (IBAction)showModeChanged:(id)sender
 {
+    [self resetData];
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    _showStatus = segmentedControl.selectedSegmentIndex;
-    [self switchTableView];
+    _showStatus = (DBBookStatus)segmentedControl.selectedSegmentIndex;
+    
+    NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+    if (!_bookListDict[key]) {
+        _bookListDict[key] = [NSMutableArray new];
+        [self getData];
+    } else {
+        [self.tableView reloadData];
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 320, 10) animated:YES];
+    }
 }
 
-- (void)switchTableView
-{
-    self.wantReadTableView.hidden = YES;
-    self.readingTableView.hidden = YES;
-    self.hasReadTableView.hidden = YES;
-    UITableView *tableView = _tableViews[_showStatus];
-    tableView.hidden = NO;
-    [tableView reloadData];
-    if (THE_APPDELEGATE.isLogin && [_bookListArray[_showStatus] count] == 0)
-        [self getDataWithIndex:_showStatus];
+- (IBAction)wantToReadTapped:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+    DBBook *book = _bookListDict[key][button.tag];
+    
+    [self showLoading];
+    [book changeStatus:DBBookStatusWantRead success:^{
+        [self dismissLoading];
+        NSString *newkey = [NSString stringWithFormat:@"%d", DBBookStatusWantRead];
+        [_bookListDict[newkey] insertObject:book atIndex:0];
+        
+        [_bookListDict[key] removeObject:book];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:button.tag inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self showErrorWithStatus:@"网络错误！"];
+    }];
 }
 
-#pragma mark - BookCellDelegate
+- (IBAction)readingTapped:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+    DBBook *book = _bookListDict[key][button.tag];
+    
+    [self showLoading];
+    [book changeStatus:DBBookStatusReading success:^{
+        [self dismissLoading];
+        NSString *newkey = [NSString stringWithFormat:@"%d", DBBookStatusReading];
+        [_bookListDict[newkey] insertObject:book atIndex:0];
+        
+        [_bookListDict[key] removeObject:book];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:button.tag inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self showErrorWithStatus:@"网络错误！"];
+    }];
+}
 
-- (void)bookStatusChanged:(DBBook *)book fromStatus:(DBBookStatus)status
-{
-    [_bookListArray[status] removeObject:book];
-    [_tableViews[status] reloadData];
-    double delayInSeconds = 0.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self reloadWithStatus:book.status];
-    });
+- (IBAction)hasReadTapped:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key = [NSString stringWithFormat:@"%d", _showStatus];
+    DBBook *book = _bookListDict[key][button.tag];
+    
+    [self showLoading];
+    [book changeStatus:DBBookStatusHasRead success:^{
+        [self dismissLoading];
+        NSString *newkey = [NSString stringWithFormat:@"%d", DBBookStatusHasRead];
+        [_bookListDict[newkey] insertObject:book atIndex:0];
+        
+        [_bookListDict[key] removeObject:book];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:button.tag inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self showErrorWithStatus:@"网络错误！"];
+    }];
 }
 
 - (void)refreshInvoked:(UIRefreshControl *)refreshControl
 {
-    [self reloadWithStatus:refreshControl.tag];
+    [self reload];
 }
 
 @end

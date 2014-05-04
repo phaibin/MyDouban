@@ -31,6 +31,4 @@
 @property (nonatomic, weak) DBBook *book;
 @property (nonatomic, weak) id<BookCellDelegate> delegate;
 
-- (IBAction)changeStatusTapped:(id)sender;
-
 @end

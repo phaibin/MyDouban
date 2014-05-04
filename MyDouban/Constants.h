@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 Leon. All rights reserved.
 //
 
+#define IOS7    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 #define APP_KEY         @"004e785a8cb2933300eb690fa617b999"
 #define APP_SECRET      @"9e4a5e1aa3a136df"
@@ -29,5 +30,28 @@
 #define NOTIFICATION_LOGIN          @"NOTIFICATION_LOGIN"
 #define NOTIFICATION_LOGOUT         @"NOTIFICATION_LOGOUT"
 
+// Color
 #define RGBCOLOR(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
 #define RGBACOLOR(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+
+#define kTextColor                      RGBCOLOR(51, 51, 51)
+#define kLightTextColor                 RGBCOLOR(102, 102, 102)
+#define kButtonBackgroundColor          RGBCOLOR(72, 178, 239)
+
+
+#define kCellSelectionColor     RGBCOLOR(237, 237, 237)
+#define kOrangeColor            RGBCOLOR(244, 153, 37)
+#define kOrangeShadowColor      RGBCOLOR(153, 108, 23)
+#define kOrderSelectedColor     RGBACOLOR(163, 202, 233, 0.5)
+#define kGrayColor2                  RGBACOLOR(99, 99, 99)
+#define kBlueColor1                  RGBACOLOR(17, 84, 190)
+#define kBlackBarColor          RGBACOLOR(0, 0, 0, 0.8)
+#define kWhiteBarColor          RGBACOLOR(255, 255, 255, 0.8)
+
+#define kDefaultTextColor      RGBCOLOR(124, 135, 165)
+#define kDefaultBlueColor      RGBCOLOR(106, 119, 157)
+
+#define kDefaultBarColor      RGBCOLOR(51, 51, 51)
+
+
+#define UIColorWithHex(hexValue) [UIColor colorWithHex:hexValue]

@@ -83,6 +83,7 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@", [error localizedDescription]);
+            [self showErrorWithStatus:@"网络错误！"];
         }];
         return NO;
     }

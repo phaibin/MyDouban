@@ -30,6 +30,10 @@
 {
     [super awakeFromNib];
     [self innerInit];
+    
+    UIButton *webButton = [UIButton buttonWithTitle:@"去网页版" positionY:250];
+    [webButton addTarget:self action:@selector(webButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:webButton];
 }
 
 - (void)innerInit
@@ -54,6 +58,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)webButtonTapped:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://movie.douban.com"]];
 }
 
 @end

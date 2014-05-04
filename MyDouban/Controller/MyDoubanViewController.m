@@ -13,6 +13,7 @@
 #import "UserInfo.h"
 #import "UIImageView+WebCache.h"
 #import "NSDate+Convenience.h"
+#import "UIViewController+Categories.h"
 
 @interface MyDoubanViewController ()
 
@@ -36,6 +37,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
     [self innerInit];
 }
 
@@ -59,6 +61,8 @@
     self.headerImageView.layer.borderWidth = 1;
     self.headerImageView.layer.borderColor = [UIColor grayColor].CGColor;
     
+    self.versionLabel.text = [NSString stringWithFormat:@"Version %@", [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
+    
     if (THE_APPDELEGATE.userId) {
         self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"退出" style:ExtendBarButtonItemStyleBlue target:self action:@selector(logoutTapped:)];
         [self getData];
@@ -76,10 +80,10 @@
 - (void)getData
 {
     NSString *url = [NSString stringWithFormat:URL_USER_INFO, THE_APPDELEGATE.userId];
-    [SVProgressHUD show];
+    [self showLoading];
     [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         _userInfo = [[UserInfo alloc] initWithDict:responseObject];
         self.nameLabel.text = [NSString stringWithFormat:@"%@ (%@)", _userInfo.nickName, _userInfo.userName];
         self.joinLabel.text = [NSDate stringFromDate:_userInfo.joinedIn format:@"yyyy-MM-dd加入"];
@@ -98,7 +102,7 @@
             }
         }];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
+        [self showErrorWithStatus:@"网络错误！"];
     }];
 }
 

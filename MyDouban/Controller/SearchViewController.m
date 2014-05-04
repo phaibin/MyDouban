@@ -6,33 +6,27 @@
 //  Copyright (c) 2013年 Leon. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "SearchViewController.h"
 #import "LoginViewController.h"
 
-@interface HomeViewController ()
+@interface SearchViewController ()
 
 @end
 
-@implementation HomeViewController
+@implementation SearchViewController
 {
     NSMutableArray *_bookList;
     NSMutableArray *_movieList;
     UITapGestureRecognizer *_tapGesture;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-        [self innerInit];
-    }
-    return self;
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogin:) name:NOTIFICATION_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogout:) name:NOTIFICATION_LOGOUT object:nil];
+    
     [self innerInit];
 }
 
@@ -65,6 +59,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)hasLogin:(NSNotification *)notification
+{
+    [self searchWithText:self.searchBar.text];
+}
+
+- (void)hasLogout:(NSNotification *)notification
+{
+    [self searchWithText:self.searchBar.text];
+}
+
 - (void)getHomeData
 {
 //    NSString *url = URL_BOOK_SEARCH;
@@ -91,13 +95,13 @@
 {
     NSString *url = URL_BOOK_SEARCH;
     NSDictionary *parameters = @{@"q":searchText, @"count":@10};
-    [SVProgressHUD show];
+    [self showLoading];
     if (THE_APPDELEGATE.isLogin)
         [[AFAppDotNetAPIClient sharedClient] setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", THE_APPDELEGATE.accessToken]];
     else
         [[AFAppDotNetAPIClient sharedClient] clearAuthorizationHeader];
     [[AFAppDotNetAPIClient sharedClient] getPath:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
+        [self dismissLoading];
         [_bookList removeAllObjects];
         for (NSDictionary *dict in responseObject[@"books"]) {
             DBBook *book = [[DBBook alloc] initWithSearchDict:dict];
@@ -105,13 +109,13 @@
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
+        [self showErrorWithStatus:@"网络错误！"];
     }];
 }
 
 #pragma mark - Table view data source
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 90;
 }
@@ -155,6 +159,9 @@
         // Configure the cell...
         DBBook *book = _bookList[indexPath.row];
         [cell setBook:book];
+        cell.wantReadButton.tag = indexPath.row;
+        cell.readingButton.tag = indexPath.row;
+        cell.hasReadButton.tag = indexPath.row;
         return cell;
     } else if (indexPath.section == 1) {
         static NSString *CellIdentifier = @"MovieCell";
@@ -168,56 +175,11 @@
     return nil;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -233,20 +195,59 @@
     [searchBar resignFirstResponder];
 }
 
-#pragma mark - BookCellDelegate
-
-- (void)bookStatusChanged:(DBBook *)book fromStatus:(DBBookStatus)status
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CAHNGE_STATUS object:@(book.status)];
-    [self.tableView reloadData];
+- (IBAction)wantToReadTapped:(id)sender {
+    if ([self checkForLogin]) {
+        UIButton *button = (UIButton *)sender;
+        DBBook *book = _bookList[button.tag];
+        
+        [self showLoading];
+        [book changeStatus:DBBookStatusWantRead success:^{
+            [self dismissLoading];
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self showErrorWithStatus:@"网络错误！"];
+        }];
+    }
 }
 
-- (void)bookStatusChangeFailed:(DBBook *)book withError:(NSError *)error
+- (IBAction)readingTapped:(id)sender {
+    if ([self checkForLogin]) {
+        UIButton *button = (UIButton *)sender;
+        DBBook *book = _bookList[button.tag];
+        
+        [self showLoading];
+        [book changeStatus:DBBookStatusReading success:^{
+            [self dismissLoading];
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self showErrorWithStatus:@"网络错误！"];
+        }];
+    }
+}
+
+- (IBAction)hasReadTapped:(id)sender {
+    if ([self checkForLogin]) {
+        UIButton *button = (UIButton *)sender;
+        DBBook *book = _bookList[button.tag];
+        
+        [self showLoading];
+        [book changeStatus:DBBookStatusHasRead success:^{
+            [self dismissLoading];
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self showErrorWithStatus:@"网络错误！"];
+        }];
+    }
+}
+
+- (BOOL)checkForLogin
 {
     if (!THE_APPDELEGATE.isLogin) {
         LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController] animated:YES completion:nil];
+        return NO;
     }
+    return YES;
 }
 
 #pragma mark - UIGestureRecognizerDelegate

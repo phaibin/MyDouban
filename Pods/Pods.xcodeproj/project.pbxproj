@@ -63,7 +63,6 @@
 		71503F0AB3704B5490816AA6 /* upsampling_neon.c in Sources */ = {isa = PBXBuildFile; fileRef = FA012A85D9BA4024972E99A9 /* upsampling_neon.c */; };
 		74F5C552D3F84493AE5FD9D3 /* decode.h in Headers */ = {isa = PBXBuildFile; fileRef = E141F32BE8124C398E511D0E /* decode.h */; };
 		75D16ACA2C874DCE87B5A35D /* dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E685F4966C6424BB978C5E9 /* dec.c */; };
-		7643403A3605494A833A5DD4 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D883EA74696D44489C5EFA43 /* SVProgressHUD.h */; };
 		781B2760D65E4AE08680DA3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EB38DA5AD147B08C958277 /* Foundation.framework */; };
 		786F70591DE74C1782C94833 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B1DDD4615A44A029CC8CB3F /* thread.h */; };
 		7B28F912F87D441981A792D4 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 2936812EDFA7426AB6A4B9C5 /* thread.c */; };
@@ -110,7 +109,6 @@
 		EC89333D151C4A56BF6ACECA /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A16389A3F3424793ADBD20F4 /* tree.c */; };
 		EDB05890769B4A0299168311 /* Pods-SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD918C747B1D41CE8794861D /* Pods-SVProgressHUD-dummy.m */; };
 		F032660DF0B94C5AB2E856AC /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D05581CC61BF482496D2E8C6 /* UIImage+MultiFormat.h */; };
-		F22994A9480A4E4C8A670112 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2409373D88CE4689B856DFF9 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 		F32404EAA06F4A48B98F27DD /* SDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3863FDFBFC98404EAD89D8DE /* SDImageCache.h */; };
 		F355BA4C26E1437CB1423FEB /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = F90A1BE4659E4247AB5A421A /* UIImage+WebP.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 		F421FE35DFB749F68E7F7038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EB38DA5AD147B08C958277 /* Foundation.framework */; };
@@ -202,7 +200,6 @@
 		2273F08C4F6E4AE99FEE8960 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFNetworking/AFURLConnectionOperation.h; sourceTree = SOURCE_ROOT; };
 		22935733CE9B4DFDBD011942 /* bit_reader.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bit_reader.c; path = libwebp/src/utils/bit_reader.c; sourceTree = SOURCE_ROOT; };
 		22EE19B6F5CD439E9AAB6EA5 /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImage/SDWebImageManager.m; sourceTree = SOURCE_ROOT; };
-		2409373D88CE4689B856DFF9 /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD/SVProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		27A38FD1ED3E4C028D06DFDA /* Pods-libwebp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-libwebp.xcconfig"; sourceTree = SOURCE_ROOT; };
 		27BD8D99F14347A08171B4E7 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = SOURCE_ROOT; };
 		2936812EDFA7426AB6A4B9C5 /* thread.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = thread.c; path = libwebp/src/utils/thread.c; sourceTree = SOURCE_ROOT; };
@@ -301,7 +298,6 @@
 		D5B68A39756147A78BA94AC2 /* Pods-libwebp-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-libwebp-prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D72DA6073CB1493BBF73E7E1 /* NSData+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+GIF.h"; path = "SDWebImage/SDWebImage/NSData+GIF.h"; sourceTree = SOURCE_ROOT; };
 		D82AA9754B3A44B191E7D80F /* cpu.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cpu.c; path = libwebp/src/dsp/cpu.c; sourceTree = SOURCE_ROOT; };
-		D883EA74696D44489C5EFA43 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD/SVProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		DA5F3B4BEF2F4B4AAAFC4AD0 /* dec_sse2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = dec_sse2.c; path = libwebp/src/dsp/dec_sse2.c; sourceTree = SOURCE_ROOT; };
 		DF0CE4D7105748B2A5DABFE4 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking/AFNetworking.h; sourceTree = SOURCE_ROOT; };
 		E07C244EDDA347D7937EF5C3 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFNetworking/AFURLConnectionOperation.m; sourceTree = SOURCE_ROOT; };
@@ -387,15 +383,6 @@
 				AD918C747B1D41CE8794861D /* Pods-SVProgressHUD-dummy.m */,
 			);
 			name = "Pods-SVProgressHUD";
-			sourceTree = "<group>";
-		};
-		170D29F0C75F4109B5392788 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				D883EA74696D44489C5EFA43 /* SVProgressHUD.h */,
-				2409373D88CE4689B856DFF9 /* SVProgressHUD.m */,
-			);
-			name = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		2AB85417A67E4B14960FCA00 /* Resources */ = {
@@ -500,7 +487,6 @@
 				C0C3ABFECA0E44A980BA2E80 /* AFNetworking */,
 				31751D556A8A43DC9F0DBBAD /* JSONKit */,
 				A996999EB46A402AABCB8EFE /* SDWebImage */,
-				170D29F0C75F4109B5392788 /* SVProgressHUD */,
 				B751852319FC4D9B8F7401B1 /* libwebp */,
 			);
 			name = Pods;
@@ -781,7 +767,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7643403A3605494A833A5DD4 /* SVProgressHUD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,7 +887,7 @@
 		718C119409344F1E870E3542 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 7D7DB298F84142018D44ECD2 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1023,7 +1008,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F22994A9480A4E4C8A670112 /* SVProgressHUD.m in Sources */,
 				EDB05890769B4A0299168311 /* Pods-SVProgressHUD-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1082,7 +1066,6 @@
 			baseConfigurationReference = 2AF164F76C6542A0B07D38E9 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1111,7 +1094,6 @@
 			baseConfigurationReference = E4F2ADB61C734A1C8BA61455 /* Pods-libwebp-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1139,6 +1121,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
@@ -1148,7 +1131,6 @@
 			baseConfigurationReference = 662E8930E26A48C6BAD9CDD9 /* Pods-SDWebImage-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1177,7 +1159,6 @@
 			baseConfigurationReference = E4F2ADB61C734A1C8BA61455 /* Pods-libwebp-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1208,7 +1189,6 @@
 			baseConfigurationReference = 44E5EB45CEEC43A496259BDB /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1238,7 +1218,6 @@
 			baseConfigurationReference = CF56D549B6034095A33A8562 /* Pods-JSONKit-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1267,7 +1246,6 @@
 			baseConfigurationReference = 817A65C65DDD46D7A9913831 /* Pods-SVProgressHUD-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1298,7 +1276,6 @@
 			baseConfigurationReference = 817A65C65DDD46D7A9913831 /* Pods-SVProgressHUD-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1327,7 +1304,6 @@
 			baseConfigurationReference = 44E5EB45CEEC43A496259BDB /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1355,7 +1331,6 @@
 			baseConfigurationReference = CF56D549B6034095A33A8562 /* Pods-JSONKit-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1386,7 +1361,6 @@
 			baseConfigurationReference = 662E8930E26A48C6BAD9CDD9 /* Pods-SDWebImage-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1417,7 +1391,6 @@
 			baseConfigurationReference = 2AF164F76C6542A0B07D38E9 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

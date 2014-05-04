@@ -90,38 +90,4 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)changeStatusTapped:(id)sender
-{
-    UIButton *button = (UIButton *)sender;
-    DBBookStatus status = DBBookStatusNone;
-    switch (button.tag) {
-        case 0:
-            status = DBBookStatusWantRead;
-            break;
-        case 1:
-            status = DBBookStatusReading;
-            break;
-        case 2:
-            status = DBBookStatusHasRead;
-            break;
-        default:
-            break;
-    }
-    if (THE_APPDELEGATE.isLogin) {
-        DBBookStatus orgStatus = self.book.status;
-        [self.book changeStatus:status success:^{
-            if ([self.delegate respondsToSelector:@selector(bookStatusChanged:fromStatus:)])
-                [self.delegate bookStatusChanged:self.book fromStatus:orgStatus];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if ([self.delegate respondsToSelector:@selector(bookStatusChangeFailed:withError:)]) {
-                [self.delegate bookStatusChangeFailed:self.book withError:error];
-            }
-        }];
-    } else {
-        if ([self.delegate respondsToSelector:@selector(bookStatusChangeFailed:withError:)]) {
-            [self.delegate bookStatusChangeFailed:self.book withError:nil];
-        }
-    }
-}
-
 @end

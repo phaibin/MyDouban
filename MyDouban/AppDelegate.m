@@ -18,23 +18,40 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
     self.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_ACCESSTOKEN];
     self.refreshToken = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_REFRESHTOKEN];
     self.userId = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_USERID];
     
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"bg_tabBar.png"]];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selection.png"]];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithWhite:0.5 alpha:1], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil] forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithWhite:0.85 alpha:1], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil] forState:UIControlStateSelected];
-    
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"bg_topBar.png"] forBarMetrics:UIBarMetricsDefault];
-    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, backButtonImage.size.height*2) forBarMetrics:UIBarMetricsDefault];
+    [self setAppearence];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogout:) name:NOTIFICATION_LOGOUT object:nil];
     
     return YES;
+}
+
+- (void)setAppearence
+{
+    if (IOS7) {
+        [[UINavigationBar appearance] setBarTintColor:RGBCOLOR(51, 51, 51)];
+        [[UITabBar appearance] setBarTintColor:RGBCOLOR(51, 51, 51)];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    } else {
+        [[UINavigationBar appearance] setTintColor:RGBCOLOR(51, 51, 51)];
+        [[UITabBar appearance] setTintColor:RGBCOLOR(51, 51, 51)];
+    }
+    
+//    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"bg_tabBar.png"]];
+//    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selection.png"]];
+//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithWhite:0.5 alpha:1], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil] forState:UIControlStateNormal];
+//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithWhite:0.85 alpha:1], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil] forState:UIControlStateSelected];
+//    
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"bg_topBar.png"] forBarMetrics:UIBarMetricsDefault];
+//    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, backButtonImage.size.height*2) forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)hasLogout:(NSNotification *)notification

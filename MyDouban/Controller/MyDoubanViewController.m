@@ -43,7 +43,8 @@
 
 - (void)innerInit
 {
-    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_mydouban_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_mydouban.png"]];
+    [self.navigationController.tabBarItem setImage:[[UIImage imageNamed:@"icon_mydouban.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.navigationController.tabBarItem setSelectedImage:[[UIImage imageNamed:@"icon_mydouban_active.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasLogin:) name:NOTIFICATION_LOGIN object:nil];
 }
 
@@ -128,9 +129,10 @@
 
 - (IBAction)logoutTapped:(id)sender
 {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"登录" style:ExtendBarButtonItemStyleBlue target:self action:@selector(loginTapped:)];
-    [self clear];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGOUT object:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
+//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"登录" style:ExtendBarButtonItemStyleBlue target:self action:@selector(loginTapped:)];
+//    [self clear];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGOUT object:nil];
 }
 
 - (void)viewDidUnload {

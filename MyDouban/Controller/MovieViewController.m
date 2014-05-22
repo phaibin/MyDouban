@@ -37,8 +37,9 @@
 }
 
 - (void)innerInit
-{
-    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_movie_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_movie.png"]];
+{   
+    [self.navigationController.tabBarItem setImage:[[UIImage imageNamed:@"icon_movie.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.navigationController.tabBarItem setSelectedImage:[[UIImage imageNamed:@"icon_movie_active.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
 - (void)viewDidLoad

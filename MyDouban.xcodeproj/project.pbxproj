@@ -10,6 +10,8 @@
 		35037D5817B4C16C00A2C502 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35037D5717B4C16C00A2C502 /* SearchViewController.m */; };
 		35037D5B17B4DA9E00A2C502 /* DBMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 35037D5A17B4DA9E00A2C502 /* DBMovie.m */; };
 		35246F0C17B73B3D002A29B6 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 35246F0B17B73B3D002A29B6 /* AFAppDotNetAPIClient.m */; };
+		35658CF2191CC6C800823A0E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35658CF0191CC6C800823A0E /* libMobClickLibrary.a */; };
+		35658CF4191CC7D100823A0E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 35658CF3191CC7D100823A0E /* libz.dylib */; };
 		3570F73519150AFC003B42D9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3570F73419150AFC003B42D9 /* BaseViewController.m */; };
 		3570F76D19150BBD003B42D9 /* loading_angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3570F75819150BBD003B42D9 /* loading_angle-mask@2x.png */; };
 		3570F76E19150BBD003B42D9 /* loading_error_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3570F75919150BBD003B42D9 /* loading_error_black@2x.png */; };
@@ -31,7 +33,6 @@
 		3578532817A8E1EC00014AE0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */; };
 		357BB1B317AA625D002DC295 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1AD17AA625D002DC295 /* BookViewController.m */; };
 		357BB1B417AA625D002DC295 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1AF17AA625D002DC295 /* LoginViewController.m */; };
-		357BB1B517AA625D002DC295 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357BB1B017AA625D002DC295 /* LoginViewController.xib */; };
 		357BB1B617AA625D002DC295 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B217AA625D002DC295 /* MovieViewController.m */; };
 		357BB1BA17AA6282002DC295 /* DBBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1B917AA6282002DC295 /* DBBook.m */; };
 		357BB1BD17AA6F10002DC295 /* MyDoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */; };
@@ -100,6 +101,9 @@
 		35037D5A17B4DA9E00A2C502 /* DBMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMovie.m; sourceTree = "<group>"; };
 		35246F0A17B73B3D002A29B6 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		35246F0B17B73B3D002A29B6 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
+		35658CF0191CC6C800823A0E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		35658CF1191CC6C800823A0E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		35658CF3191CC7D100823A0E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3570F73319150AFC003B42D9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		3570F73419150AFC003B42D9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		3570F75819150BBD003B42D9 /* loading_angle-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_angle-mask@2x.png"; sourceTree = "<group>"; };
@@ -133,7 +137,6 @@
 		357BB1AD17AA625D002DC295 /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookViewController.m; sourceTree = "<group>"; };
 		357BB1AE17AA625D002DC295 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		357BB1AF17AA625D002DC295 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		357BB1B017AA625D002DC295 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		357BB1B117AA625D002DC295 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		357BB1B217AA625D002DC295 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		357BB1B817AA6282002DC295 /* DBBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBBook.h; sourceTree = "<group>"; };
@@ -209,11 +212,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35658CF4191CC7D100823A0E /* libz.dylib in Frameworks */,
 				3578532817A8E1EC00014AE0 /* MobileCoreServices.framework in Frameworks */,
 				3578532617A8E1E000014AE0 /* SystemConfiguration.framework in Frameworks */,
 				35779C3517A8C08F00319BF5 /* UIKit.framework in Frameworks */,
 				35779C3717A8C08F00319BF5 /* Foundation.framework in Frameworks */,
 				35779C3917A8C08F00319BF5 /* CoreGraphics.framework in Frameworks */,
+				35658CF2191CC6C800823A0E /* libMobClickLibrary.a in Frameworks */,
 				812A5991BC0647C0AF45E5CD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,9 +226,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35658CEF191CC6C800823A0E /* UMAnalytics_Sdk_2.2.1.OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				35658CF0191CC6C800823A0E /* libMobClickLibrary.a */,
+				35658CF1191CC6C800823A0E /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_2.2.1.OpenUDID;
+			sourceTree = "<group>";
+		};
 		3570F73619150BBD003B42D9 /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				35658CEF191CC6C800823A0E /* UMAnalytics_Sdk_2.2.1.OpenUDID */,
 				3570F75719150BBD003B42D9 /* MBProgressHUD */,
 			);
 			path = thirdparty;
@@ -270,6 +285,7 @@
 		35779C3317A8C08F00319BF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35658CF3191CC7D100823A0E /* libz.dylib */,
 				3578532717A8E1EC00014AE0 /* MobileCoreServices.framework */,
 				3578532517A8E1E000014AE0 /* SystemConfiguration.framework */,
 				35779C3417A8C08F00319BF5 /* UIKit.framework */,
@@ -326,7 +342,6 @@
 				357BB1BC17AA6F10002DC295 /* MyDoubanViewController.m */,
 				357BB1AE17AA625D002DC295 /* LoginViewController.h */,
 				357BB1AF17AA625D002DC295 /* LoginViewController.m */,
-				357BB1B017AA625D002DC295 /* LoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -479,7 +494,6 @@
 			files = (
 				35779C3F17A8C08F00319BF5 /* InfoPlist.strings in Resources */,
 				3570F7BB19152FC9003B42D9 /* MainStoryboard.storyboard in Resources */,
-				357BB1B517AA625D002DC295 /* LoginViewController.xib in Resources */,
 				3570F76D19150BBD003B42D9 /* loading_angle-mask@2x.png in Resources */,
 				35E6FB1D17AF56C700BD9B07 /* bg_tabBar.png in Resources */,
 				35E6FB1E17AF56C700BD9B07 /* bg_tabBar@2x.png in Resources */,
@@ -627,7 +641,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -642,6 +657,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "84AE50D6-2EFE-46A1-BD8A-3016C37F0D18";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -658,7 +674,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -666,6 +683,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "84AE50D6-2EFE-46A1-BD8A-3016C37F0D18";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -675,11 +693,35 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E476C7EAAE8C49B79275C644 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
 				INFOPLIST_FILE = "MyDouban/MyDouban-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyDouban/thirdparty/UMAnalytics_Sdk_2.2.1.OpenUDID",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					ImageIO,
+					"-framework",
+					MapKit,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "84AE50D6-2EFE-46A1-BD8A-3016C37F0D18";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -688,11 +730,35 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E476C7EAAE8C49B79275C644 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
 				INFOPLIST_FILE = "MyDouban/MyDouban-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyDouban/thirdparty/UMAnalytics_Sdk_2.2.1.OpenUDID",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					ImageIO,
+					"-framework",
+					MapKit,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "84AE50D6-2EFE-46A1-BD8A-3016C37F0D18";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

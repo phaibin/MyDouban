@@ -34,11 +34,15 @@
 	// Do any additional setup after loading the view.
     self.title = @"授权";
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"取消" style:ExtendBarButtonItemStyleBlue target:self action:@selector(cancelTapped:)];
+//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithTitle:@"取消" style:ExtendBarButtonItemStyleBlue target:self action:@selector(cancelTapped:)];
     
-    NSDictionary *parameters = @{@"client_id":APP_KEY, @"redirect_uri":URL_REDIRECT, @"response_type":@"code"};
-    NSURLRequest *request = [[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@""]] requestWithMethod:@"GET" path:URL_AUTHORIZE parameters:parameters];
-    [self.webview loadRequest:request];
+    if (!THE_APPDELEGATE.isLogin) {
+        NSDictionary *parameters = @{@"client_id":APP_KEY, @"redirect_uri":URL_REDIRECT, @"response_type":@"code"};
+        NSURLRequest *request = [[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@""]] requestWithMethod:@"GET" path:URL_AUTHORIZE parameters:parameters];
+        [self.webview loadRequest:request];
+    } else {
+        [self jumpToTab];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,7 +84,8 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN object:nil];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            [self jumpToTab];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@", [error localizedDescription]);
             [self showErrorWithStatus:@"网络错误！"];
@@ -89,6 +94,11 @@
     }
     
     return YES;
+}
+
+- (void)jumpToTab
+{
+    [self performSegueWithIdentifier: @"PushTab" sender: self];
 }
 
 @end

@@ -31,8 +31,9 @@
 }
 
 - (void)innerInit
-{
-    [self.navigationController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"icon_search_active.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"icon_search.png"]];
+{   
+    [self.navigationController.tabBarItem setImage:[[UIImage imageNamed:@"icon_search.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [self.navigationController.tabBarItem setSelectedImage:[[UIImage imageNamed:@"icon_search_active.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     _bookList = [[NSMutableArray alloc] init];
     _movieList = [[NSMutableArray alloc] init];
@@ -122,7 +123,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

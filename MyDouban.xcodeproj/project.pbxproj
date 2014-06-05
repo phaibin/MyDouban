@@ -693,7 +693,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E476C7EAAE8C49B79275C644 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MINYAN TANG (8LLG34426W)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
 				INFOPLIST_FILE = "MyDouban/MyDouban-Info.plist";
@@ -721,7 +721,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "84AE50D6-2EFE-46A1-BD8A-3016C37F0D18";
+				PROVISIONING_PROFILE = "A2E9B238-5EED-439D-8920-A47EEB9EE981";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -730,7 +730,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E476C7EAAE8C49B79275C644 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Changsha Joowill Network Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MINYAN TANG (8LLG34426W)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDouban/MyDouban-Prefix.pch";
 				INFOPLIST_FILE = "MyDouban/MyDouban-Info.plist";
@@ -758,7 +758,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "84AE50D6-2EFE-46A1-BD8A-3016C37F0D18";
+				PROVISIONING_PROFILE = "A2E9B238-5EED-439D-8920-A47EEB9EE981";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
